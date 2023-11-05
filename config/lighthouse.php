@@ -110,7 +110,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Query Cache
+    | Queries Cache
     |--------------------------------------------------------------------------
     |
     | Caches the result of parsing incoming query strings to boost performance on subsequent requests.
