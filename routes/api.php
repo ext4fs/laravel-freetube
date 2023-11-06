@@ -98,7 +98,7 @@ Route::prefix('v1')->group(function() {
     Route::prefix('files')->group(function () {
         Route::get('/', GetFilesController::class);
         Route::post('/upload', UploadFileController::class);
-        //Route::get('/{fileId}', GetFileByIdController::class);
+        Route::get('/{fileId}', GetFileByIdController::class);
         Route::get('/{fileId}/download', DownloadFileByIdController::class);
     });
 });

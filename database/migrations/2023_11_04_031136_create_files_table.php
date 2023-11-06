@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('duration_secs')->nullable();
             $table->timestamps();
 
+            $table->index('md5_hash');
             $table->primary('id');
         });
     }

@@ -4,5 +4,9 @@ Content-Type: multipart/form-data;boundary="abcd"
 --abcd
 Content-Disposition: form-data; name="video"; filename="test.mp4"
 
-< videos/test.mp4
+< files/videos/test.mp4
 --abcd
+
+> {%
+   client.global.set('fileId', JSON.parse(response.body)['id']);
+ %}
