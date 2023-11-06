@@ -21,6 +21,7 @@ use App\Http\Controllers\Post\EditPostByIdController;
 use App\Http\Controllers\Post\GetPostByIdController;
 use App\Http\Controllers\Post\GetPostsByAuthorIdController;
 use App\Http\Controllers\Post\GetPostsController;
+use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\DeleteUserByIdController;
 use App\Http\Controllers\User\GetUserByIdController;
 use App\Http\Controllers\User\GetUsersController;
@@ -53,13 +54,15 @@ Route::prefix('v1')->group(function() {
     Route::get('/', [Controller::class, 'getHello']);
 
     Route::prefix('auth')->group(function () {
-        Route::post('login', LogInController::class);
-        Route::get('logout', LogOutController::class);
-        Route::post('sign-up', SignUpController::class);
+        Route::post('/login', LogInController::class);
+        Route::get('/logout', LogOutController::class);
+        Route::post('/sign-up', SignUpController::class);
+        Route::get('/refresh');
     });
 
     Route::prefix('users')->group(function() {
         Route::get('/', GetUsersController::class);
+        Route::post('/', CreateUserController::class);
         Route::get('/{userId}', GetUserByIdController::class);
         Route::get('/{userId}/avatar');
         Route::get('/{userId}/posts', GetPostsByAuthorIdController::class);

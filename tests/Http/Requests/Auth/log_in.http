@@ -1,1 +1,7 @@
-POST https://{{host}}:{{port}}/{{api}}/auth/login
+POST http://{{host}}:{{port}}/{{api}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "admin@test.com",
+    "password": "qwerty1234"
+}
