@@ -17,6 +17,8 @@ return new class extends Migration
             $table->uuid('file_id')->unique();
             $table->string('title');
             $table->string('desc');
+            $table->integer('views')->default(0);
+            $table->integer('rating')->default(0);
             $table->timestamps();
 
             $table->foreign('file_id')->references('id')->on('files');

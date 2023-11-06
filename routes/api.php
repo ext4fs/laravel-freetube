@@ -70,7 +70,7 @@ Route::prefix('v1')->group(function() {
             Route::delete('/{userId}/posts', DeletePostsByAuthorId::class);
             Route::delete('/{userId}/comments', DeleteCommentsByAuthorIdController::class);
         });
-    });
+    })->where(['userId' => '^[0-9]+$']);
 
     Route::prefix('posts')->group(function() {
         Route::get('/', GetPostsController::class);
@@ -83,7 +83,7 @@ Route::prefix('v1')->group(function() {
             Route::delete('/{postId}', DeletePostByIdController::class);
             Route::delete('/{postId}/comments', DeleteCommentsByPostIdController::class);
         });
-    });
+    })->where(['postId' => '^[0-9]+$']);
 
     Route::prefix('comments')->group(function() {
         Route::get('/', GetCommentsController::class);
@@ -93,12 +93,14 @@ Route::prefix('v1')->group(function() {
             Route::put('/{commentId}', EditCommentByIdController::class);
             Route::delete('/{commentId}', DeleteCommentByIdController::class);
         });
-    });
+    })->where(['commentId' => '^[0-9]+$']);
 
     Route::prefix('files')->group(function () {
         Route::get('/', GetFilesController::class);
-        Route::post('/upload', UploadFileController::class);
         Route::get('/{fileId}', GetFileByIdController::class);
-        Route::get('/{fileId}/download', DownloadFileByIdController::class);
-    });
+        Route::middleware('auth')->group(function() {
+            Route::get('/{fileId}/download', DownloadFileByIdController::class);
+            Route::post('/upload', UploadFileController::class);
+        });
+    })->where(['fileId' => '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$']);
 });

@@ -1,8 +1,9 @@
-POST http://localhost/api/v1/posts
+POST http://{{host}}:{{port}}/{{api}}/posts
 Content-Type: application/json
 
 {
     "author_id": 1,
+    "file_id": "9a8c313a-e963-4731-827e-ef5bdf28ec09",
     "title": "none",
     "desc": "what do you want"
 }

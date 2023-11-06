@@ -1,0 +1,1 @@
+DELETE http://{{host}}:{{port}}/{{api}}/users/{{authorId}}

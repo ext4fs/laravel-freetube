@@ -169,7 +169,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         L5Swagger\L5SwaggerServiceProvider::class,
-        ProtoneMedia\LaravelFFMpeg\Support\ServiceProvider::class
     ])->toArray(),
 
     /*
@@ -185,7 +184,6 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-        'FFMpeg' => ProtoneMedia\LaravelFFMpeg\Support\FFMpeg::class
     ])->toArray(),
 
 ];
