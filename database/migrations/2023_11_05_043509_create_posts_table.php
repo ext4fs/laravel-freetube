@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->integer('author_id');
+            $table->uuid('file_id')->unique();
             $table->string('title');
             $table->string('desc');
             $table->timestamps();
 
-            $table->foreign('author_id', 'post_user_fk')->on('users')->references('id');
+            $table->foreign('file_id')->references('id')->on('files');
+            $table->foreign('author_id')->references('id')->on('users');
         });
     }
 

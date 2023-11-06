@@ -41,3 +41,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/hello/{firstname?}', function(string $firstname = 'World') {
+    return view('main', ['firstname' => $firstname]);
+});

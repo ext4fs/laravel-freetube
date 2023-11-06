@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->integer('post_id');
             $table->integer('author_id');
+            $table->integer('post_id');
             $table->string('message');
             $table->timestamps();
 
-            $table->foreign('post_id')->on('posts')->references('id');
-            $table->foreign('author_id')->on('users')->references('id');
+            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('post_id')->references('id')->on('posts');
         });
     }
 

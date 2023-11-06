@@ -8,11 +8,14 @@
         "php": "^8.1",
         "darkaonline/l5-swagger": "^8.5",
         "guzzlehttp/guzzle": "^7.2",
+        "james-heinrich/getid3": "^1.9",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "mll-lab/laravel-graphiql": "^3.1",
-        "nuwave/lighthouse": "^6.22"
+        "nuwave/lighthouse": "^6.22",
+        "pbmedia/laravel-ffmpeg": "^8.3",
+        "php-ffmpeg/php-ffmpeg": "^1.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

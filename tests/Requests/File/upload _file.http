@@ -1,0 +1,8 @@
+POST http://localhost/api/v1/files/upload
+Content-Type: multipart/form-data;boundary="abcd"
+
+--abcd
+Content-Disposition: form-data; name="video"; filename="test.mp4"
+
+< videos/test.mp4
+--abcd
