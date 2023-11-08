@@ -9,38 +9,48 @@ use Illuminate\Routing\Controller as BaseController;
 /**
  * @OA\Info(
  *      version="1.0.0",
- *      title="Laravel OpenApi Demo Documentation",
- *      description="L5 Swagger OpenApi description",
+ *      title="FreeTube",
+ *      description="Swagger OpenAPI 3 for FreeTube description.",
  *      @OA\Contact(
- *          email="admin@admin.com"
+ *          email="wa6gtzjmwi8nnqur@gmail.com"
  *      ),
  *      @OA\License(
- *          name="Apache 2.0",
- *          url="http://www.apache.org/licenses/LICENSE-2.0.html"
+ *          name="MIT",
+ *          url="https://www.mit.edu/~amini/LICENSE.md"
  *      )
  * )
  *
  * @OA\Server(
- *      url=L5_SWAGGER_CONST_HOST,
- *      description="Demo API Server"
+ *      url="http://localhost/api/v1",
  * )
 
  *
  * @OA\Tag(
- *     name="Projects",
- *     description="API Endpoints of Projects"
+ *     name="Auth",
  * )
+ *
+ * @AO\Tag(
+ *     name="User"
+ * )
+ *
+ * @AO\Tag (
+ *     name="Post"
+ * )
+ *
+ * @AO\Tag(
+ *     name="Comment"
+ * )
+ *
+ * @AO\Tag(
+ *     name="File"
+ * )
+ *
  */
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    /**
-     * @OA\Get(
-     *     path="/api/users",
-     *     @OA\Response(response="200", description="An example endpoint")
-     * )
-     */
     public function getHello() {
         return 'Hello, World!';
     }

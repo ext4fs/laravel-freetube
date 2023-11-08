@@ -1,30 +1,137 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Laravel OpenApi Demo Documentation",
-        "description": "L5 Swagger OpenApi description",
+        "title": "FreeTube",
+        "description": "Swagger OpenAPI 3 for FreeTube description.",
         "contact": {
-            "email": "admin@admin.com"
+            "email": "wa6gtzjmwi8nnqur@gmail.com"
         },
         "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            "name": "MIT",
+            "url": "https://www.mit.edu/~amini/LICENSE.md"
         },
         "version": "1.0.0"
     },
     "servers": [
         {
-            "url": "http://my-default-host.com",
-            "description": "Demo API Server"
+            "url": "http://localhost/api/v1"
         }
     ],
     "paths": {
-        "/api/users": {
-            "get": {
-                "operationId": "a19809c4ec262935de6cb075ff9bd0d4",
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Log into account.",
                 "responses": {
                     "200": {
-                        "description": "An example endpoint"
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Log out from account.",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/auth/refresh": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Refresh JWT token for Bearer authorization.",
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                }
+            }
+        },
+        "/auth/sign-up": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Sign up for FreeTube.",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get list of all users."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete all users."
+                    }
+                }
+            }
+        },
+        "/users/{userId}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get user by given id."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Update user by given id.",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "description": "Delete user by given id.",
+                "responses": {
+                    "200": {
+                        "description": "Delete user by given id."
                     }
                 }
             }
@@ -32,8 +139,7 @@
     },
     "tags": [
         {
-            "name": "Projects",
-            "description": "API Endpoints of Projects"
+            "name": "Auth"
         }
     ]
 }

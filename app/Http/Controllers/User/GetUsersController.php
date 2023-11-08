@@ -2,6 +2,14 @@
 
 namespace App\Http\Controllers\User;
 
+/**
+ * @OA\Get(
+ *     path="/users",
+ *     tags={"User"},
+ *     @OA\Response(response="200", description="Get list of all users.")
+ * )
+ *
+ */
 class GetUsersController extends UserController {
     public function __invoke() {
         return $this->getUsers();
