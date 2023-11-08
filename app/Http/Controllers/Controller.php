@@ -29,19 +29,19 @@ use Illuminate\Routing\Controller as BaseController;
  *     name="Auth",
  * )
  *
- * @AO\Tag(
+ * @OA\Tag(
  *     name="User"
  * )
  *
- * @AO\Tag (
+ * @OA\Tag(
  *     name="Post"
  * )
  *
- * @AO\Tag(
+ * @OA\Tag(
  *     name="Comment"
  * )
  *
- * @AO\Tag(
+ * @OA\Tag(
  *     name="File"
  * )
  *

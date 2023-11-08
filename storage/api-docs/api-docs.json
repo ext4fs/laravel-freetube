@@ -140,6 +140,18 @@
     "tags": [
         {
             "name": "Auth"
+        },
+        {
+            "name": "User"
+        },
+        {
+            "name": "Post"
+        },
+        {
+            "name": "Comment"
+        },
+        {
+            "name": "File"
         }
     ]
 }

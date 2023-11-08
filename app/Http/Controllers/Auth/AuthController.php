@@ -5,49 +5,52 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LogInRequest;
 use App\Http\Requests\Auth\SignUpRequest;
+use App\Models\User;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller {
 
     public function logIn(LogInRequest $request) {
         $data = $request->only('email', 'password');
-        if (!$token = auth()->attempt($data)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-        return $this->respondWithToken($token);
+        return $this->verifyUserCreditials($data['email'], $data['password']);
     }
 
     public function signUp(SignUpRequest $request) {
-
+        $data = $request->only('name', 'email', 'password');
+        try {
+            $user = User::create($data);
+            return $this->verifyUserCreditials($user->email, $data['password']);
+        } catch(UniqueConstraintViolationException $e) {
+            return response()->json([
+                'error' => 'Email is already taken'
+            ]);
+        }
     }
 
     public function logOut() {
         Auth::logout();
+        return true;
     }
 
-    /**
-     * Refresh a token.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function refresh()
     {
         return $this->respondWithToken(auth()->refresh());
     }
 
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     protected function respondWithToken($token)
     {
         return response()->json([
             'access_token' => $token,
-            'token_type' => 'bearer',
+            'token_type' => 'Bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
+    }
+
+    protected function verifyUserCreditials($email, $password) {
+        if (!$token = Auth::attempt(['email' => $email, 'password' => $password])) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+        return $this->respondWithToken($token);
     }
 }

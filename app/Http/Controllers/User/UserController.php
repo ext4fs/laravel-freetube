@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller {
-    //
+
     public function getUsers() {
         $users = User::all();
         return $users;
@@ -18,6 +19,10 @@ class UserController extends Controller {
     public function getUserById(int $userId) {
         $user = User::find($userId);
         return $user;
+    }
+
+    public function getMe() {
+        return Auth::getUser();
     }
 
     public function createUser(CreateUserRequest $request) {

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LogInController;
 use App\Http\Controllers\Auth\LogOutController;
+use App\Http\Controllers\Auth\RefreshController;
 use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\Comment\CreateCommentController;
 use App\Http\Controllers\Comment\DeleteCommentByIdController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\Post\GetPostsByAuthorIdController;
 use App\Http\Controllers\Post\GetPostsController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\DeleteUserByIdController;
+use App\Http\Controllers\User\GetMeController;
 use App\Http\Controllers\User\GetUserByIdController;
 use App\Http\Controllers\User\GetUsersController;
 use App\Http\Controllers\User\UpdateUserByIdController;
@@ -57,22 +59,23 @@ Route::prefix('v1')->group(function() {
         Route::post('/login', LogInController::class);
         Route::get('/logout', LogOutController::class);
         Route::post('/sign-up', SignUpController::class);
-        Route::get('/refresh');
+        Route::get('/refresh', RefreshController::class);
     });
 
     Route::prefix('users')->group(function() {
         Route::get('/', GetUsersController::class);
         Route::post('/', CreateUserController::class);
-        Route::get('/{userId}', GetUserByIdController::class);
-        Route::get('/{userId}/avatar');
-        Route::get('/{userId}/posts', GetPostsByAuthorIdController::class);
-        Route::get('/{userId}/comments', GetCommentsByAuthorIdController::class);
         Route::middleware('auth')->group(function () {
+            Route::get('/me', GetMeController::class);
             Route::put('/{userId}', UpdateUserByIdController::class);
             Route::delete('/{userId}', DeleteUserByIdController::class);
             Route::delete('/{userId}/posts', DeletePostsByAuthorId::class);
             Route::delete('/{userId}/comments', DeleteCommentsByAuthorIdController::class);
         });
+        Route::get('/{userId}', GetUserByIdController::class);
+        Route::get('/{userId}/avatar');
+        Route::get('/{userId}/posts', GetPostsByAuthorIdController::class);
+        Route::get('/{userId}/comments', GetCommentsByAuthorIdController::class);
     })->where(['userId' => '^[0-9]+$']);
 
     Route::prefix('posts')->group(function() {

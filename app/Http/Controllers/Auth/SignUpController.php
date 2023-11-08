@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 
+use App\Http\Requests\Auth\SignUpRequest;
+
 /**
  * @OA\Post(
  *     path="/auth/sign-up",
@@ -12,7 +14,7 @@ namespace App\Http\Controllers\Auth;
  * )
  */
 class SignUpController extends AuthController {
-    public function __invoke() {
-        // TODO: Implement __invoke() method.
+    public function __invoke(SignUpRequest $request) {
+        return $this->signUp($request);
     }
 }
