@@ -14,7 +14,7 @@ namespace App\Http\Controllers\Post;
  * )
  */
 class DeletePostsByAuthorId extends PostController {
-    public function __invoke(int $authorId) {
-        return $this->deletePostsByAuthorId($authorId);
+    public function __invoke(string $userId) {
+        return $this->deletePostsByAuthorId($userId);
     }
 }

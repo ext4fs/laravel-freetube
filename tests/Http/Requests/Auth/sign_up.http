@@ -1,8 +1,8 @@
-POST http://{{host}}:{{port}}/{{api}}/auth/sign-up
+POST http://localhost/api/v1/auth/sign-up
 Content-Type: application/json
 
 {
-    "name": "test3",
-    "email": "testxx@gmail.com",
-    "password": "qwerty12345"
+    "name": "snow",
+    "email": "snow@freetube.com",
+    "password": "qwerty123456"
 }

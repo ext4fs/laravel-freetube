@@ -8,7 +8,7 @@ use App\Http\Controllers\Comment\CreateCommentController;
 use App\Http\Controllers\Comment\DeleteCommentByIdController;
 use App\Http\Controllers\Comment\DeleteCommentsByAuthorIdController;
 use App\Http\Controllers\Comment\DeleteCommentsByPostIdController;
-use App\Http\Controllers\Comment\EditCommentByIdController;
+use App\Http\Controllers\Comment\UpdateCommentByIdController;
 use App\Http\Controllers\Comment\GetCommentByIdController;
 use App\Http\Controllers\Comment\GetCommentsByAuthorIdController;
 use App\Http\Controllers\Comment\GetCommentsByPostIdController;
@@ -18,7 +18,7 @@ use App\Http\Controllers\Post\CreatePostController;
 use App\Http\Controllers\Post\DeletePostByIdController;
 use App\Http\Controllers\Post\DeletePostsByAuthorId;
 use App\Http\Controllers\Post\DeletePostsController;
-use App\Http\Controllers\Post\EditPostByIdController;
+use App\Http\Controllers\Post\UpdatePostByIdController;
 use App\Http\Controllers\Post\GetPostByIdController;
 use App\Http\Controllers\Post\GetPostsByAuthorIdController;
 use App\Http\Controllers\Post\GetPostsController;
@@ -68,16 +68,15 @@ Route::prefix('v1')->group(function() {
         Route::middleware('auth')->group(function () {
             Route::get('/me', GetMeController::class);
             Route::put('/{userId}', UpdateUserByIdController::class);
-            Route::post('/{userId}/avatar');
             Route::delete('/{userId}', DeleteUserByIdController::class);
             Route::delete('/{userId}/posts', DeletePostsByAuthorId::class);
+            Route::delete('/{userId}/posts/{postId}/comments');
             Route::delete('/{userId}/comments', DeleteCommentsByAuthorIdController::class);
         });
         Route::get('/{userId}', GetUserByIdController::class);
-        Route::get('/{userId}/avatar');
         Route::get('/{userId}/posts', GetPostsByAuthorIdController::class);
         Route::get('/{userId}/comments', GetCommentsByAuthorIdController::class);
-    })->where(['userId' => '^[0-9]+$']);
+    })->where(['userId' => '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$', 'postId' => '^[0-9]+$']);
 
     Route::prefix('posts')->group(function() {
         Route::get('/', GetPostsController::class);
@@ -85,7 +84,7 @@ Route::prefix('v1')->group(function() {
         Route::get('/{postId}/comments', GetCommentsByPostIdController::class);
         Route::middleware('auth')->group(function () {
             Route::post('/', CreatePostController::class);
-            Route::put('/{postId}', EditPostByIdController::class);
+            Route::put('/{postId}', UpdatePostByIdController::class);
             Route::delete('/', DeletePostsController::class);
             Route::delete('/{postId}', DeletePostByIdController::class);
             Route::delete('/{postId}/comments', DeleteCommentsByPostIdController::class);
@@ -97,7 +96,7 @@ Route::prefix('v1')->group(function() {
         Route::get('/{commentId}', GetCommentByIdController::class);
         Route::middleware('auth')->group(function () {
             Route::post('/', CreateCommentController::class);
-            Route::put('/{commentId}', EditCommentByIdController::class);
+            Route::put('/{commentId}', UpdateCommentByIdController::class);
             Route::delete('/{commentId}', DeleteCommentByIdController::class);
         });
     })->where(['commentId' => '^[0-9]+$']);

@@ -1,2 +1,0 @@
-DELETE http://{{host}}:{{port}}/{{api}}/posts/{{postId}}
-

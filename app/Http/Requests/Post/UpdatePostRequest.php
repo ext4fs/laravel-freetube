@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class UpdatePostRequest extends FormRequest {
 
     public function authorize(): bool {
-        $author_id = $this->input('author_id');
-        return Auth::id() == $author_id;
+        return true;
     }
 
     public function rules(): array {

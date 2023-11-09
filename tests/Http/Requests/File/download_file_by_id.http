@@ -1,1 +1,0 @@
-GET http://{{host}}:{{port}}/{{api}}/files/9a8c2125-2de2-488f-9514-2ce17b21ca97/download

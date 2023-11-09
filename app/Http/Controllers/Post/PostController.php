@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\CreatePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
 use App\Models\Post;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @OA\Tag(
@@ -25,8 +27,8 @@ class PostController extends Controller {
         return $post;
     }
 
-    public function getPostsByAuthorId(int $authorId) {
-        $posts = Post::where('author_id', $authorId)->get();
+    public function getPostsByAuthorId(string $userId) {
+        $posts = Post::where('authorId', $userId)->get();
         return $posts;
     }
 
@@ -38,24 +40,39 @@ class PostController extends Controller {
 
     public function updatePostById(int $postId, UpdatePostRequest $request) {
         $post = Post::find($postId);
+        $user = $request->user();
+        if (!$user->isAdmin() && !$user->can('update', $post)) {
+            abort(403);
+        }
         $data = $request->input();
         $post->update($data);
         return $post;
     }
 
-    public function deletePosts() {
+    public function deletePosts(Request $request) {
+        $user = $request->user();
+        if (!$user->isAdmin()) {
+            abort(403);
+        }
         $posts = Post::truncate();
         return $posts;
     }
 
-    public function deletePostById(int $postId) {
+    public function deletePostById(Request $request, int $postId) {
         $post = Post::find($postId);
+        $user = $request->user();
+        if (!$user->isAdmin() && !$user->can('delete', $post)) {
+            abort(403);
+        }
         $post->delete();
         return $post;
     }
 
-    public function deletePostsByAuthorId(int $authorId) {
-        $posts = Post::where('author_id', $authorId)->delete();
+    public function deletePostsByAuthorId(string $userId) {
+        if (Auth::id() != $userId) {
+            abort(403);
+        }
+        $posts = Post::where('authorId', $userId)->delete();
         return $posts;
     }
 }

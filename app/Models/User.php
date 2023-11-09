@@ -32,24 +32,19 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     public function posts() {
-        return $this->hasMany('Post', 'author_id', 'id');
+        return $this->hasMany('Post', 'authorId', 'id');
     }
 
     public function comments() {
-        return $this->hasMany('Comment', 'author_id', 'id');
+        return $this->hasMany('Comment', 'authorId', 'id');
     }
 
-    public function avatar() {
-        return $this->hasOne('File', 'avatar_id', 'id');
-    }
 
-    public function getJWTIdentifier()
-    {
+    public function getJWTIdentifier() {
         return $this->getKey();
     }
 
-    public function getJWTCustomClaims()
-    {
+    public function getJWTCustomClaims() {
         return [];
     }
 

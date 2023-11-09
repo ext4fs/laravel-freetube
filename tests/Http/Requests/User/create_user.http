@@ -1,8 +1,0 @@
-POST http://{{host}}:{{port}}/{{api}}/users
-Content-Type: application/json
-
-{
-    "email": "admin@test.com",
-    "name": "administrator",
-    "password": "qwerty1234"
-}
