@@ -70,11 +70,163 @@
                 }
             }
         },
+        "/files/{fileId}": {
+            "get": {
+                "tags": [
+                    "File"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "File"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/files": {
+            "get": {
+                "tags": [
+                    "File"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "File"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/files/{fileId}/download": {
+            "get": {
+                "tags": [
+                    "File"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/files/upload": {
+            "post": {
+                "tags": [
+                    "File"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/posts": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Get all posts",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Create new post",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Delete all posts",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/posts/{postId}": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Get a post by given id",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Delete a post by given id",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/users/{authorId}/posts": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get all posts by given author id",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Delete posts by given author id",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
         "/users": {
             "get": {
                 "tags": [
                     "User"
                 ],
+                "summary": "Get all users",
                 "responses": {
                     "200": {
                         "description": "Get list of all users."
@@ -85,9 +237,10 @@
                 "tags": [
                     "User"
                 ],
+                "summary": "Create user",
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "success"
                     }
                 }
             },
@@ -95,6 +248,7 @@
                 "tags": [
                     "User"
                 ],
+                "summary": "Delete all users",
                 "responses": {
                     "200": {
                         "description": "Delete all users."
@@ -107,6 +261,7 @@
                 "tags": [
                     "User"
                 ],
+                "summary": "Get user by given id",
                 "responses": {
                     "200": {
                         "description": "Get user by given id."
@@ -117,7 +272,7 @@
                 "tags": [
                     "User"
                 ],
-                "description": "Update user by given id.",
+                "summary": "Update user by given id",
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -128,30 +283,66 @@
                 "tags": [
                     "User"
                 ],
-                "description": "Delete user by given id.",
+                "summary": "Delete user by given id",
                 "responses": {
                     "200": {
                         "description": "Delete user by given id."
                     }
                 }
             }
+        },
+        "/users/me": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get current authorized user",
+                "responses": {
+                    "200": {
+                        "description": "sucess"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Category": {},
+            "Comment": {},
+            "File": {},
+            "Post": {},
+            "Tag": {},
+            "User": {}
         }
     },
     "tags": [
         {
-            "name": "Auth"
+            "name": "Auth",
+            "description": "API endpoints for authorization"
         },
         {
-            "name": "User"
+            "name": "Category",
+            "description": "API endpoints for interacting with categories"
         },
         {
-            "name": "Post"
+            "name": "Comment",
+            "description": "API endpoints for interacting with comments"
         },
         {
-            "name": "Comment"
+            "name": "File",
+            "description": "API endpoints for interacting with files"
         },
         {
-            "name": "File"
+            "name": "Post",
+            "description": "API endpoints for interacting with posts"
+        },
+        {
+            "name": "Tag",
+            "description": "API endpoints for interacting with tags"
+        },
+        {
+            "name": "User",
+            "description": "API endpoints for interacting with users"
         }
     ]
 }

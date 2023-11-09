@@ -8,6 +8,7 @@ use App\Http\Controllers\User\UserController;
  * @OA\Delete(
  *     path="/users",
  *     tags={"User"},
+ *     summary="Delete all users",
  *     @OA\Response(response="200", description="Delete all users.")
  * )
  */

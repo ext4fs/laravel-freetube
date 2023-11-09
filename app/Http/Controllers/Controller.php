@@ -19,34 +19,10 @@ use Illuminate\Routing\Controller as BaseController;
  *          url="https://www.mit.edu/~amini/LICENSE.md"
  *      )
  * )
- *
  * @OA\Server(
  *      url="http://localhost/api/v1",
  * )
-
- *
- * @OA\Tag(
- *     name="Auth",
- * )
- *
- * @OA\Tag(
- *     name="User"
- * )
- *
- * @OA\Tag(
- *     name="Post"
- * )
- *
- * @OA\Tag(
- *     name="Comment"
- * )
- *
- * @OA\Tag(
- *     name="File"
- * )
- *
  */
-
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;

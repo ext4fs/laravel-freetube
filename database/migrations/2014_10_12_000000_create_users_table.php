@@ -10,9 +10,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
             $table->string('name');
-            //$table->uuid('avatar_id');
+            $table->uuid('avatar_id')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -20,7 +20,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            //$table->foreign('avatar_id')->references('id')->on('files');
+            $table->primary('id');
+            $table->foreign('avatar_id')->references('id')->on('files');
         });
     }
 

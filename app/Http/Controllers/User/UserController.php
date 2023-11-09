@@ -9,6 +9,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * @OA\Tag(
+ *     name="User",
+ *     description="API endpoints for interacting with users",
+ * )
+ */
 class UserController extends Controller {
 
     public function getUsers() {

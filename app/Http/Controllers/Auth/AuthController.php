@@ -9,6 +9,12 @@ use App\Models\User;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * @OA\Tag(
+ *     name="Auth",
+ *     description="API endpoints for authorization",
+ * )
+ */
 class AuthController extends Controller {
 
     public function logIn(LogInRequest $request) {

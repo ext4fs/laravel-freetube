@@ -5,12 +5,18 @@ namespace App\Http\Controllers\File;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\File\UploadFileRequest;
 use App\Models\File;
-use App\Models\Video;
-use FFMpeg\Coordinate\TimeCode;
+
+use getID3;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Storage;
-use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
+use Imagick;
 
+/**
+ * @OA\Tag(
+ *     name="File",
+ *     description="API endpoints for interacting with files"
+ * )
+ */
 class FileController extends Controller  {
 
     public function getFiles() {
@@ -23,44 +29,46 @@ class FileController extends Controller  {
         return $file;
     }
 
+
     public function uploadFile(UploadFileRequest $request) {
-        $contents = $request->file('video');
+        $contents = $request->file('file');
+        $hash = md5($contents->getContent());
+        if ($file = File::where('md5_hash', $hash)->first()) {
+            return $file;
+        }
         if ($contents->isValid()) {
-            $timestamp = now()->getTimestampMs();
-            $tmpPath = $contents->getRealPath();
-            $cmd = Process::run('file -i '. $tmpPath);
-            $output = $cmd->output();
-            $pattern = "{^(.*):\s+(?P<type>\w+)\/(?P<extension>\w+)}";
-            preg_match($pattern, $output, $matches);
-            $type = $matches['type'];
-            $extension = $matches['extension'];
-            $cmd = Process::run('ffprobe -v error -select_streams v -show_entries stream=width,height,duration -of csv=p=0:s=x ' . $tmpPath);
-            $output = $cmd->output();
-            [$width, $height, $duration] = preg_split('{x}', $output);
-            $store_to = 'other';
-            if ($type == 'video') {
-                $store_to = 'videos';
+            $type = $contents->getMimeType();
+            $isVideo = preg_match('/^video\/.*$/', $type);
+            $isImage = preg_match('/^image\/.*$/', $type);
+            if (!($isVideo ^ $isImage)) {
+                return response()->json([
+                    "error" => "invalid file type"
+                ]);
             }
-            if ($type == 'image') {
-                $store_to = 'images';
-            }
-            $path = $contents->storeAs($store_to, $timestamp . '.' . $extension);
+            $path = $contents->storeAs($isVideo ? 'videos' : 'images', $contents->hashName());
             $name = $contents->getClientOriginalName();
             $size = ceil($contents->getSize() / 1024);
-            $hash = md5($contents->getContent());
-            $file = File::create(
-                [
-                    'name' => $name,
-                    'path_to' => $path,
-                    'type' => $type,
-                    'md5_hash' => $hash,
-                    'width' => $width,
-                    'height' => $height,
-                    'size_kbytes' => $size
-                ]
-            );
+            $data = [
+                'name' => $name,
+                'path_to' => $path,
+                'type' => $type,
+                'md5_hash' => $hash,
+                'size_kbytes' => $size
+            ];
+            if ($isVideo) {
+                $id3 = new getID3();
+                $info = $id3->analyze($contents->getRealPath());
+                $data['duration_secs'] = ceil($info['playtime_seconds']);
+                $data['width'] = $info['video']['resolution_y'];
+                $data['height'] = $info['video']['resolution_x'];
+            } else {
+                $data['width'] = 0;
+                $data['height'] = 0;
+            }
+            $file = File::create($data);
+            return $file;
         }
-        return $file;
+        return -1;
     }
 
     public function downloadFileById(string $fileId) {

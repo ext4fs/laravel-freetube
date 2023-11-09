@@ -7,6 +7,12 @@ use App\Http\Requests\Post\CreatePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
 use App\Models\Post;
 
+/**
+ * @OA\Tag(
+ *     name="Post",
+ *     description="API endpoints for interacting with posts",
+ * )
+ */
 class PostController extends Controller {
 
     public function getPosts() {

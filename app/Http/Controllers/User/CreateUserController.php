@@ -9,7 +9,8 @@ use App\Http\Requests\User\CreateUserRequest;
  * @OA\Post(
  *     path="/users",
  *     tags={"User"},
- *     @OA\Response(response="200", description="Success")
+ *     summary="Create user",
+ *     @OA\Response(response="200", description="success")
  * )
  */
 class CreateUserController extends UserController {

@@ -7,6 +7,12 @@ use App\Http\Requests\Comment\CreateCommentRequest;
 use App\Http\Requests\Comment\UpdateCommentRequest;
 use App\Models\Comment;
 
+/**
+ * @OA\Tag(
+ *     name="Comment",
+ *     description="API endpoints for interacting with comments",
+ * )
+ */
 class CommentController extends Controller {
 
     public function getComments() {

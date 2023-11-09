@@ -68,6 +68,7 @@ Route::prefix('v1')->group(function() {
         Route::middleware('auth')->group(function () {
             Route::get('/me', GetMeController::class);
             Route::put('/{userId}', UpdateUserByIdController::class);
+            Route::post('/{userId}/avatar');
             Route::delete('/{userId}', DeleteUserByIdController::class);
             Route::delete('/{userId}/posts', DeletePostsByAuthorId::class);
             Route::delete('/{userId}/comments', DeleteCommentsByAuthorIdController::class);
@@ -101,12 +102,37 @@ Route::prefix('v1')->group(function() {
         });
     })->where(['commentId' => '^[0-9]+$']);
 
+    Route::prefix('/categories')->group(function () {
+        Route::get('/');
+        Route::get('/{categoryId}');
+        Route::get('/{categoryId}/posts');
+        Route::middleware('auth')->group(function () {
+           Route::post('/');
+           Route::put('/{categoryId}');
+           Route::delete('/');
+           Route::delete('/{categoryId}');
+        });
+    })->where(['categoryId' => '^[0-9]+$']);
+
+    Route::prefix('/tags')->group(function () {
+       Route::get('/');
+       Route::get('/{tagId}');
+       Route::middleware('auth')->group(function () {
+            Route::post('/');
+            Route::put('/{tagId}');
+            Route::delete('/');
+            Route::delete('/{tagId}');
+       });
+    })->where(['tagId' => '^[0-9]+$']);
+
     Route::prefix('files')->group(function () {
         Route::get('/', GetFilesController::class);
         Route::get('/{fileId}', GetFileByIdController::class);
         Route::middleware('auth')->group(function() {
             Route::get('/{fileId}/download', DownloadFileByIdController::class);
             Route::post('/upload', UploadFileController::class);
+            Route::delete('/');
+            Route::delete('/{fileId}');
         });
     })->where(['fileId' => '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$']);
 });
