@@ -26,12 +26,12 @@ class CommentController extends Controller {
     }
 
     public function getCommentsByPostId(int $postId) {
-        $comments = Comment::where('postId', $postId)->get();
+        $comments = Comment::where('post_id', $postId)->get();
         return $comments;
     }
 
     public function getCommentsByAuthorId(string $authorId) {
-        $comments = Comment::where('authorId', $authorId)->get();
+        $comments = Comment::where('author_id', $authorId)->get();
         return $comments;
     }
 
@@ -54,17 +54,18 @@ class CommentController extends Controller {
     }
 
     public function deleteCommentsByPostId(int $postId) {
-        $comments = Comment::where('postId', $postId)->delete();
+        $comments = Comment::where('post_id', $postId)->delete();
         return $comments;
     }
 
     public function deleteCommentsByAuthorId(int $userId) {
-        $comments = Comment::where('authorId', $userId)->delete();
+        $comments = Comment::where('author_id', $userId)->delete();
         return $comments;
     }
 
     public function deleteCommentsByPostIdAndAuthorId(int $postId, string $userId) {
-
+        $comments = Comment::where('post_id', $postId)->where('author_id', $userId)->delete();
+        return $comments;
     }
 
     public function deleteCommentById(int $commentId) {

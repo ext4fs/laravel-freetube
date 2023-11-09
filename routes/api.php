@@ -4,9 +4,16 @@ use App\Http\Controllers\Auth\LogInController;
 use App\Http\Controllers\Auth\LogOutController;
 use App\Http\Controllers\Auth\RefreshController;
 use App\Http\Controllers\Auth\SignUpController;
+use App\Http\Controllers\Category\CreateCategoryController;
+use App\Http\Controllers\Category\DeleteCategoriesController;
+use App\Http\Controllers\Category\DeleteCategoryByIdController;
+use App\Http\Controllers\Category\GetCategoriesController;
+use App\Http\Controllers\Category\GetCategoryByIdController;
+use App\Http\Controllers\Category\UpdateCategoryByIdController;
 use App\Http\Controllers\Comment\CreateCommentController;
 use App\Http\Controllers\Comment\DeleteCommentByIdController;
 use App\Http\Controllers\Comment\DeleteCommentsByAuthorIdController;
+use App\Http\Controllers\Comment\DeleteCommentsByPostIdAndAuthorIdController;
 use App\Http\Controllers\Comment\DeleteCommentsByPostIdController;
 use App\Http\Controllers\Comment\UpdateCommentByIdController;
 use App\Http\Controllers\Comment\GetCommentByIdController;
@@ -14,14 +21,24 @@ use App\Http\Controllers\Comment\GetCommentsByAuthorIdController;
 use App\Http\Controllers\Comment\GetCommentsByPostIdController;
 use App\Http\Controllers\Comment\GetCommentsController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\File\DeleteFileByIdController;
+use App\Http\Controllers\File\DeleteFilesController;
 use App\Http\Controllers\Post\CreatePostController;
 use App\Http\Controllers\Post\DeletePostByIdController;
-use App\Http\Controllers\Post\DeletePostsByAuthorId;
+use App\Http\Controllers\Post\DeletePostsByAuthorIdController;
 use App\Http\Controllers\Post\DeletePostsController;
+use App\Http\Controllers\Post\GetPostsByCategoryIdController;
+use App\Http\Controllers\Post\GetPostsByTagIdController;
 use App\Http\Controllers\Post\UpdatePostByIdController;
 use App\Http\Controllers\Post\GetPostByIdController;
 use App\Http\Controllers\Post\GetPostsByAuthorIdController;
 use App\Http\Controllers\Post\GetPostsController;
+use App\Http\Controllers\Tag\CreateTagController;
+use App\Http\Controllers\Tag\DeleteTagByIdController;
+use App\Http\Controllers\Tag\DeleteTagsController;
+use App\Http\Controllers\Tag\GetTagByIdController;
+use App\Http\Controllers\Tag\GetTagsController;
+use App\Http\Controllers\Tag\UpdateTagByIdController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\DeleteUserByIdController;
 use App\Http\Controllers\User\GetMeController;
@@ -69,8 +86,8 @@ Route::prefix('v1')->group(function() {
             Route::get('/me', GetMeController::class);
             Route::put('/{userId}', UpdateUserByIdController::class);
             Route::delete('/{userId}', DeleteUserByIdController::class);
-            Route::delete('/{userId}/posts', DeletePostsByAuthorId::class);
-            Route::delete('/{userId}/posts/{postId}/comments');
+            Route::delete('/{userId}/posts', DeletePostsByAuthorIdController::class);
+            Route::delete('/{userId}/posts/{postId}/comments', DeleteCommentsByPostIdAndAuthorIdController::class);
             Route::delete('/{userId}/comments', DeleteCommentsByAuthorIdController::class);
         });
         Route::get('/{userId}', GetUserByIdController::class);
@@ -82,9 +99,12 @@ Route::prefix('v1')->group(function() {
         Route::get('/', GetPostsController::class);
         Route::get('/{postId}', GetPostByIdController::class);
         Route::get('/{postId}/comments', GetCommentsByPostIdController::class);
+        Route::get('/{postId}/tags');
         Route::middleware('auth')->group(function () {
             Route::post('/', CreatePostController::class);
             Route::put('/{postId}', UpdatePostByIdController::class);
+            Route::get('/{postId}/up',);
+            Route::get('/{postId}/down',);
             Route::delete('/', DeletePostsController::class);
             Route::delete('/{postId}', DeletePostByIdController::class);
             Route::delete('/{postId}/comments', DeleteCommentsByPostIdController::class);
@@ -102,25 +122,26 @@ Route::prefix('v1')->group(function() {
     })->where(['commentId' => '^[0-9]+$']);
 
     Route::prefix('/categories')->group(function () {
-        Route::get('/');
-        Route::get('/{categoryId}');
-        Route::get('/{categoryId}/posts');
+        Route::get('/', GetCategoriesController::class);
+        Route::get('/{categoryId}', GetCategoryByIdController::class);
+        Route::get('/{categoryId}/posts', GetPostsByCategoryIdController::class);
         Route::middleware('auth')->group(function () {
-           Route::post('/');
-           Route::put('/{categoryId}');
-           Route::delete('/');
-           Route::delete('/{categoryId}');
+           Route::post('/', CreateCategoryController::class);
+           Route::put('/{categoryId}', UpdateCategoryByIdController::class);
+           Route::delete('/', DeleteCategoriesController::class);
+           Route::delete('/{categoryId}', DeleteCategoryByIdController::class);
         });
     })->where(['categoryId' => '^[0-9]+$']);
 
     Route::prefix('/tags')->group(function () {
-       Route::get('/');
-       Route::get('/{tagId}');
+       Route::get('/', GetTagsController::class);
+       Route::get('/{tagId}', GetTagByIdController::class);
+       Route::get('/{tagId}/posts', GetPostsByTagIdController::class);
        Route::middleware('auth')->group(function () {
-            Route::post('/');
-            Route::put('/{tagId}');
-            Route::delete('/');
-            Route::delete('/{tagId}');
+            Route::post('/', CreateTagController::class);
+            Route::put('/{tagId}', UpdateTagByIdController::class);
+            Route::delete('/', DeleteTagsController::class);
+            Route::delete('/{tagId}', DeleteTagByIdController::class);
        });
     })->where(['tagId' => '^[0-9]+$']);
 
@@ -130,8 +151,8 @@ Route::prefix('v1')->group(function() {
         Route::middleware('auth')->group(function() {
             Route::get('/{fileId}/download', DownloadFileByIdController::class);
             Route::post('/upload', UploadFileController::class);
-            Route::delete('/');
-            Route::delete('/{fileId}');
+            Route::delete('/', DeleteFilesController::class);
+            Route::delete('/{fileId}', DeleteFileByIdController::class);
         });
     })->where(['fileId' => '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$']);
 });

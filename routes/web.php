@@ -17,7 +17,7 @@ use App\Http\Controllers\Media\GetMediaController;
 use App\Http\Controllers\Media\UploadMediaController;
 use App\Http\Controllers\Post\CreatePostController;
 use App\Http\Controllers\Post\DeletePostByIdController;
-use App\Http\Controllers\Post\DeletePostsByAuthorId;
+use App\Http\Controllers\Post\DeletePostsByAuthorIdController;
 use App\Http\Controllers\Post\UpdatePostByIdController;
 use App\Http\Controllers\Post\GetPostByIdController;
 use App\Http\Controllers\Post\GetPostsByAuthorIdController;

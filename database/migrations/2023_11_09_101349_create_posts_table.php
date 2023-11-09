@@ -13,12 +13,18 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->uuid('authorId');
+            $table->uuid('author_id');
+            $table->integer('category_id');
             $table->string('title');
             $table->string('description');
+            $table->integer('views')->default(0);
+            $table->integer('rating')->default(0);
             $table->timestamps();
 
-            $table->foreign('authorId')->references('id')->on('users');
+            $table->foreign('author_id')->references('id')->on('users')
+                ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

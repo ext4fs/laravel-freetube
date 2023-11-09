@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\CreatePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +29,17 @@ class PostController extends Controller {
     }
 
     public function getPostsByAuthorId(string $userId) {
-        $posts = Post::where('authorId', $userId)->get();
+        $posts = Post::where('author_id', $userId)->get();
+        return $posts;
+    }
+
+    public function getPostsByCategoryId(int $categoryId) {
+        $posts = Post::where('category_id', $categoryId)->get();
+        return $posts;
+    }
+
+    public function getPostsByTagId(int $tagId) {
+        $posts = Tag::find($tagId)->posts;
         return $posts;
     }
 
