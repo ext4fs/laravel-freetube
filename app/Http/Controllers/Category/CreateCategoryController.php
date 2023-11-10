@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\Category;
 
-use App\Http\Controllers\Category\CategoryController;
-use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\Category\CreateCategoryRequest;
 
 class CreateCategoryController extends CategoryController {
     public function __invoke(CreateCategoryRequest $request) {

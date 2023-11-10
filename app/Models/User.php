@@ -10,12 +10,33 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
+/**
+ * @OA\Schema (
+ *     schema="User",
+ *     @OA\Property (
+ *         property="id",
+ *         type="uuid"
+ *     ),
+ *     @OA\Property (
+ *         property="username",
+ *         type="string",
+ *     ),
+ *     @OA\Property (
+ *         property="email",
+ *         type="string",
+ *     ),
+ *     @OA\Property (
+ *         property="password",
+ *          type="string"
+ *     )
+ * )
+ */
 class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasUuids, HasFactory, Notifiable;
 
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
     ];
@@ -39,7 +60,6 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Comment::class, 'author_id', 'id');
     }
 
-
     public function getJWTIdentifier() {
         return $this->getKey();
     }
@@ -48,7 +68,4 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function isAdministrator() {
-        return $this->is_admin;
-    }
 }

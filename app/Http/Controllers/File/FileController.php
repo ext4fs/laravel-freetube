@@ -67,8 +67,9 @@ class FileController extends Controller  {
             }
             $file = File::create($data);
             return $file;
+        } else {
+            return response()->json(['error' => 'file is not valid']);
         }
-        return -1;
     }
 
     public function downloadFileById(string $fileId) {
