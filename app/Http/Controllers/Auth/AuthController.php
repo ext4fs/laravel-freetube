@@ -22,12 +22,27 @@ class AuthController extends Controller {
         return $this->verifyUserCreditials($data['email'], $data['password']);
     }
 
+    protected function verifyUserCreditials($email, $password) {
+        if (!$token = Auth::attempt(['email' => $email, 'password' => $password])) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+        return $this->respondWithToken($token);
+    }
+
+    protected function respondWithToken($token) {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
+        ]);
+    }
+
     public function signUp(SignUpRequest $request) {
         $data = $request->only('name', 'email', 'password');
         try {
             $user = User::create($data);
             return $this->verifyUserCreditials($user->email, $data['password']);
-        } catch(UniqueConstraintViolationException $e) {
+        } catch (UniqueConstraintViolationException $e) {
             return response()->json([
                 'error' => 'Email is already taken'
             ]);
@@ -39,24 +54,7 @@ class AuthController extends Controller {
         return true;
     }
 
-    public function refresh()
-    {
+    public function refresh() {
         return $this->respondWithToken(auth()->refresh());
-    }
-
-    protected function respondWithToken($token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
-        ]);
-    }
-
-    protected function verifyUserCreditials($email, $password) {
-        if (!$token = Auth::attempt(['email' => $email, 'password' => $password])) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-        return $this->respondWithToken($token);
     }
 }

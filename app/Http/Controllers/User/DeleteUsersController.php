@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\User\UserController;
-
 /**
  * @OA\Delete(
  *     path="/users",

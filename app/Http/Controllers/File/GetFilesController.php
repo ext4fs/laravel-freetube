@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\File;
 
-use App\Http\Controllers\File\FileController;
-
 /**
  * @OA\Get(
  *     path="/files",

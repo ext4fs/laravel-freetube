@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests\Post;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
 class UpdatePostRequest extends FormRequest {
 

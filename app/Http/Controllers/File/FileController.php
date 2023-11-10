@@ -5,11 +5,8 @@ namespace App\Http\Controllers\File;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\File\UploadFileRequest;
 use App\Models\File;
-
 use getID3;
-use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Storage;
-use Imagick;
 
 /**
  * @OA\Tag(
@@ -17,7 +14,7 @@ use Imagick;
  *     description="API endpoints for interacting with files"
  * )
  */
-class FileController extends Controller  {
+class FileController extends Controller {
 
     public function getFiles() {
         $files = File::all();

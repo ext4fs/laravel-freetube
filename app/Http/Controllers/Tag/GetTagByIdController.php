@@ -2,8 +2,16 @@
 
 namespace App\Http\Controllers\Tag;
 
-use App\Http\Controllers\Tag\TagController;
-
+/**
+ * @OA\Get (
+ *     path="/tags/{tagId}",
+ *     tags={"Tag"},
+ *     @OA\Response(
+ *         response="200",
+ *         description="success"
+ *     )
+ * )
+ */
 class GetTagByIdController extends TagController {
     public function __invoke(int $tagId) {
         return $this->getTagById($tagId);
