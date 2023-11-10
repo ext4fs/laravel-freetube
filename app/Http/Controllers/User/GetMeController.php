@@ -9,7 +9,7 @@ namespace App\Http\Controllers\User;
  *     summary="Get current authorized user",
  *     @OA\Response(
  *         response="200",
- *         description="sucess"
+ *         description="sucess",
  *     )
  * )
  */

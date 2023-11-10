@@ -7,9 +7,9 @@ use App\Http\Requests\Auth\LogInRequest;
 /**
  * @OA\Post(
  *     path="/auth/login",
- *     description="Log into account.",
+ *     summary="log into the account",
  *     tags={"Auth"},
- *     @OA\Response(response="200", description="Success")
+ *     @OA\Response(response="200", description="success")
  * )
  */
 class LogInController extends AuthController {

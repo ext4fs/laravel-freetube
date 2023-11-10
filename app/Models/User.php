@@ -18,7 +18,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  *         type="uuid"
  *     ),
  *     @OA\Property (
- *         property="username",
+ *         property="name",
  *         type="string",
  *     ),
  *     @OA\Property (
@@ -36,7 +36,7 @@ class User extends Authenticatable implements JWTSubject
     use HasApiTokens, HasUuids, HasFactory, Notifiable;
 
     protected $fillable = [
-        'username',
+        'name',
         'email',
         'password',
     ];

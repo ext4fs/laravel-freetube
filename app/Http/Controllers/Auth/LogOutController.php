@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Auth;
 /**
  * @OA\Get(
  *     path="/auth/logout",
- *     description="Log out from account.",
+ *     summary="log out from the account",
  *     tags={"Auth"},
- *     @OA\Response(response="200", description="Success")
+ *     @OA\Response(response="200", description="success")
  * )
  */
 class LogOutController extends AuthController {

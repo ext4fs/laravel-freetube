@@ -24,10 +24,10 @@
                 "tags": [
                     "Auth"
                 ],
-                "description": "Log into account.",
+                "summary": "log into the account",
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "success"
                     }
                 }
             }
@@ -37,10 +37,10 @@
                 "tags": [
                     "Auth"
                 ],
-                "description": "Log out from account.",
+                "summary": "log out from the account",
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "success"
                     }
                 }
             }
@@ -50,10 +50,10 @@
                 "tags": [
                     "Auth"
                 ],
-                "description": "Refresh JWT token for Bearer authorization.",
+                "summary": "refresh the jwt token for authorization",
                 "responses": {
                     "200": {
-                        "description": "Success."
+                        "description": "success"
                     }
                 }
             }
@@ -63,7 +63,53 @@
                 "tags": [
                     "Auth"
                 ],
-                "description": "Sign up for FreeTube.",
+                "summary": "sign up for freetube",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SignUpRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Category"
+                ],
                 "responses": {
                     "200": {
                         "description": "success"
@@ -71,8 +117,151 @@
                 }
             }
         },
-        "/categories": {
+        "/categories/{categoryId}": {
             "get": {
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/comments": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/comments/{commentId}": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/users/{userId}/comments": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/users/{userId}/posts/{postId}/comments": {
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/posts/{postId}/comments": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Post"
+                ],
                 "responses": {
                     "200": {
                         "description": "success"
@@ -515,7 +704,7 @@
                     "id": {
                         "type": "uuid"
                     },
-                    "username": {
+                    "name": {
                         "type": "string"
                     },
                     "email": {
@@ -532,7 +721,7 @@
     "tags": [
         {
             "name": "Auth",
-            "description": "API endpoints for authorization"
+            "description": "API endpoints for JWT authorization"
         },
         {
             "name": "Category",

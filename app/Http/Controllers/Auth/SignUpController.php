@@ -8,9 +8,12 @@ use App\Http\Requests\Auth\SignUpRequest;
 /**
  * @OA\Post(
  *     path="/auth/sign-up",
- *     description="Sign up for FreeTube.",
+ *     summary="sign up for freetube",
  *     tags={"Auth"},
- *     @OA\Response(response="200", description="success")
+ *     @OA\RequestBody (
+ *         @OA\JsonContent(ref="#/components/schemas/SignUpRequest")
+ *     ),
+ *     @OA\Response(response="200", description="success", @OA\JsonContent())
  * )
  */
 class SignUpController extends AuthController {

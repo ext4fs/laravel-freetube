@@ -21,6 +21,7 @@ use Illuminate\Routing\Controller as BaseController;
  * )
  * @OA\Server(
  *      url="http://localhost/api/v1",
+ *      description="API server"
  * )
  */
 class Controller extends BaseController
