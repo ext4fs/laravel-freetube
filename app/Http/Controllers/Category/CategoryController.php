@@ -10,7 +10,7 @@ use App\Models\Category;
 /**
  * @OA\Tag(
  *     name="Category",
- *     description="API endpoints for interacting with categories",
+ *     description="endpoints for interacting with categories",
  * )
  */
 class CategoryController extends Controller {

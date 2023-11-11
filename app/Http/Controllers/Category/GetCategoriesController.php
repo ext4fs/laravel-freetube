@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Category;
  * @OA\Get (
  *     path="/categories",
  *     tags={"Category"},
+ *     summary="get all categories",
  *     @OA\Response(
  *         response="200",
  *         description="success"

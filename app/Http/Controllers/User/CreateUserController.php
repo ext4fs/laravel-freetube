@@ -8,7 +8,7 @@ use App\Http\Requests\User\CreateUserRequest;
  * @OA\Post(
  *     path="/users",
  *     tags={"User"},
- *     summary="Create user",
+ *     summary="create a user",
  *     @OA\Response(response="200", description="success")
  * )
  */

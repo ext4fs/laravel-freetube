@@ -7,7 +7,7 @@ namespace App\Http\Controllers\User;
  *     path="/users",
  *     tags={"User"},
  *     summary="Get all users",
- *     @OA\Response(response="200", description="Get list of all users.")
+ *     @OA\Response(response="200", description="list of all users")
  * )
  *
  */

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * @OA\Tag(
  *     name="Post",
- *     description="API endpoints for interacting with posts",
+ *     description="endpoints for interacting with posts",
  * )
  */
 class PostController extends Controller {

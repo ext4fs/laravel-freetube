@@ -8,6 +8,7 @@ use App\Http\Requests\Category\CreateCategoryRequest;
  * @OA\Post(
  *     path="/categories",
  *     tags={"Category"},
+ *     summary="create a category",
  *     @OA\Response(response="200", description="success"),
  * )
  */

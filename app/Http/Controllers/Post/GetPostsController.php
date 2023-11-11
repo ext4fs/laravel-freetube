@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Post;
  * @OA\Get(
  *     path="/posts",
  *     tags={"Post"},
- *     summary="Get all posts",
+ *     summary="get all posts",
+ *
  *     @OA\Response(
  *         response="200",
  *         description="success"

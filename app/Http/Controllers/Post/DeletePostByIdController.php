@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Post;
  * @OA\Delete(
  *     path="/posts/{postId}",
  *     tags={"Post"},
- *     summary="Delete a post by given id",
+ *     summary="delete a post by given id",
  *     @OA\Response(
  *         response="200",
  *         description="success"

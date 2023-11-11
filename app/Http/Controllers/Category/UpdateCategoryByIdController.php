@@ -8,6 +8,7 @@ use App\Http\Requests\Category\UpdateCategoryRequest;
  * @OA\Put(
  *     path="/categories/{categoryId}",
  *     tags={"Category"},
+ *     summary="update a category by given id",
  *     @OA\Response(response="200", description="success"),
  * )
  */

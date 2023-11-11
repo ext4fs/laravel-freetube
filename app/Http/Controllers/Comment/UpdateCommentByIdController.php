@@ -7,6 +7,7 @@ use App\Http\Requests\Comment\UpdateCommentRequest;
  * @OA\Put(
  *     path="/comments/{commentId}",
  *     tags={"Comment"},
+ *     summary="update a comment by given id",
  *     @OA\Response(response="200", description="success"),
  * )
  */

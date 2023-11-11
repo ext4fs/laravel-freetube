@@ -10,7 +10,7 @@ use App\Models\Comment;
 /**
  * @OA\Tag(
  *     name="Comment",
- *     description="API endpoints for interacting with comments",
+ *     description="endpoints for interacting with comments",
  * )
  */
 class CommentController extends Controller {

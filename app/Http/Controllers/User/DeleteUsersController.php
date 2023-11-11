@@ -6,7 +6,7 @@ namespace App\Http\Controllers\User;
  * @OA\Delete(
  *     path="/users",
  *     tags={"User"},
- *     summary="Delete all users",
+ *     summary="delete all users",
  *     @OA\Response(response="200", description="Delete all users.")
  * )
  */

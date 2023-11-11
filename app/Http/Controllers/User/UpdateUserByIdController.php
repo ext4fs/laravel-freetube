@@ -8,7 +8,7 @@ use App\Http\Requests\User\UpdateUserRequest;
  * @OA\Put(
  *     path="/users/{userId}",
  *     tags={"User"},
- *     summary="Update user by given id",
+ *     summary="update a user by given id",
  *     @OA\Response(response="200", description="Success")
  * )
  */

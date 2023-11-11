@@ -7,6 +7,7 @@ use App\Http\Requests\Comment\CreateCommentRequest;
  * @OA\Post(
  *     path="/comments",
  *     tags={"Comment"},
+ *     summary="create a category",
  *     @OA\Response(response="200", description="success"),
  * )
  */

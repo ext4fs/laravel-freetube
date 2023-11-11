@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Comment;
  * @OA\Delete(
  *     path="/users/{userId}/comments",
  *     tags={"User"},
+ *     summary="delete comments by given author id",
  *     @OA\Response(response="200", description="success"),
  * )
  */

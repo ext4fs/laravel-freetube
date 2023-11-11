@@ -8,7 +8,7 @@ use App\Http\Requests\Post\CreatePostRequest;
  * @OA\Post(
  *     path="/posts",
  *     tags={"Post"},
- *     summary="Create new post",
+ *     summary="create a post",
  *     @OA\Response(
  *         response="200",
  *         description="success"

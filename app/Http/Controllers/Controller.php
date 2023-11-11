@@ -9,15 +9,19 @@ use Illuminate\Routing\Controller as BaseController;
 /**
  * @OA\Info(
  *      version="1.0.0",
- *      title="FreeTube",
- *      description="Swagger OpenAPI 3 for FreeTube description.",
+ *      title="FreeTube OpenAPI",
+ *      description="Swagger OpenAPI 3.0 for FreeTube.",
  *      @OA\Contact(
- *          email="wa6gtzjmwi8nnqur@gmail.com"
+ *          email="ext2fs@proton.me"
  *      ),
  *      @OA\License(
  *          name="MIT",
  *          url="https://www.mit.edu/~amini/LICENSE.md"
  *      )
+ * )
+ * @OA\Server(
+ *      url="http://127.0.0.1:80/api/v1",
+ *      description="API server"
  * )
  * @OA\Server(
  *      url="http://localhost/api/v1",

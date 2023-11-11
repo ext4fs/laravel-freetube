@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Post;
  * @OA\Get(
  *     path="/posts/{postId}",
  *     tags={"Post"},
- *     summary="Get a post by given id",
+ *     summary="get a post by given id",
  *     @OA\Response(
  *         response="200",
  *         description="success"
