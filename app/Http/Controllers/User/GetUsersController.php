@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\User\GetUsersRequest;
+
 /**
  * @OA\Get(
  *     path="/users",
@@ -12,7 +14,7 @@ namespace App\Http\Controllers\User;
  *
  */
 class GetUsersController extends UserController {
-    public function __invoke() {
-        return $this->getUsers();
+    public function __invoke(GetUsersRequest $request) {
+        return $this->getUsers($request);
     }
 }

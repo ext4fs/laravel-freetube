@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Category;
+use App\Http\Requests\Category\DeleteCategoryByIdRequest;
+
 /**
  * @OA\Delete(
  *     path="/categories/{categoryId}",
@@ -10,7 +12,7 @@ namespace App\Http\Controllers\Category;
  * )
  */
 class DeleteCategoryByIdController extends CategoryController {
-    public function __invoke(int $categoryId) {
-        return $this->deleteCategoryById($categoryId);
+    public function __invoke(int $categoryId, DeleteCategoryByIdRequest $request) {
+        return $this->deleteCategoryById($categoryId, $request);
     }
 }

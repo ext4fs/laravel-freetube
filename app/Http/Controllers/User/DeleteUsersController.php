@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\User\DeleteUsersRequest;
+
 /**
  * @OA\Delete(
  *     path="/users",
@@ -11,7 +13,7 @@ namespace App\Http\Controllers\User;
  * )
  */
 class DeleteUsersController extends UserController {
-    public function __invoke() {
-        return $this->deleteUsers();
+    public function __invoke(DeleteUsersRequest $request) {
+        return $this->deleteUsers($request);
     }
 }

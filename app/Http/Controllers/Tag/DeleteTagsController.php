@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Tag;
 
+use App\Http\Requests\Tag\DeleteTagsRequest;
+
 /**
  * @OA\Delete (
  *     path="/tags",
@@ -14,7 +16,7 @@ namespace App\Http\Controllers\Tag;
  * )
  */
 class DeleteTagsController extends TagController {
-    public function __invoke() {
-        return $this->deleteTags();
+    public function __invoke(DeleteTagsRequest $request) {
+        return $this->deleteTags($request);
     }
 }

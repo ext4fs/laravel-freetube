@@ -4,6 +4,11 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\DeleteUserByIdRequest;
+use App\Http\Requests\User\DeleteUsersRequest;
+use App\Http\Requests\User\GetMeRequest;
+use App\Http\Requests\User\GetUserByIdRequest;
+use App\Http\Requests\User\GetUsersRequest;
 use App\Http\Requests\User\UpdateUserByIdRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -17,26 +22,18 @@ use Illuminate\Support\Facades\Hash;
  */
 class UserController extends Controller {
 
-    public function getUsers() {
+    public function getUsers(GetUsersRequest $request) {
         $users = User::all();
         return $users;
     }
 
-    public function getUserById(int $userId) {
+    public function getUserById(int $userId, GetUserByIdRequest $request) {
         $user = User::find($userId);
         return $user;
     }
 
-    public function getMe() {
+    public function getMe(GetMeRequest $request) {
         return Auth::getUser();
-    }
-
-    public function getUserByPostId(int $postId) {
-
-    }
-
-    public function getUserByCommentId(int $commentId) {
-
     }
 
     public function createUser(CreateUserRequest $request) {
@@ -53,12 +50,12 @@ class UserController extends Controller {
         return $user;
     }
 
-    public function deleteUsers() {
+    public function deleteUsers(DeleteUsersRequest $request) {
         $users = User::truncate();
         return $users;
     }
 
-    public function deleteUserById(int $userId) {
+    public function deleteUserById(int $userId, DeleteUserByIdRequest $request) {
         $user = User::destroy($userId);
         return $user;
     }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\User\GetUserByIdRequest;
+
 /**
  * @OA\Get(
  *     path="/users/{userId}",
@@ -11,7 +13,7 @@ namespace App\Http\Controllers\User;
  * )
  */
 class GetUserByIdController extends UserController {
-    public function __invoke(string $userId) {
-        return $this->getUserById($userId);
+    public function __invoke(string $userId, GetUserByIdRequest $request) {
+        return $this->getUserById($userId, $request);
     }
 }

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\CreateCategoryRequest;
+use App\Http\Requests\Category\DeleteCategoryByIdRequest;
+use App\Http\Requests\Category\GetCategoriesRequest;
+use App\Http\Requests\Category\GetCategoryByIdRequest;
 use App\Http\Requests\Category\UpdateCategoryByIdRequest;
 use App\Models\Category;
 
@@ -14,12 +17,12 @@ use App\Models\Category;
  * )
  */
 class CategoryController extends Controller {
-    public function getCategories() {
+    public function getCategories(GetCategoriesRequest $request) {
         $categories = Category::all();
         return $categories;
     }
 
-    public function getCategoryById(int $categoryId) {
+    public function getCategoryById(int $categoryId, GetCategoryByIdRequest $request) {
         $category = Category::find($categoryId);
         return $category;
     }
@@ -37,12 +40,12 @@ class CategoryController extends Controller {
         return $category;
     }
 
-    public function deleteCategories() {
+    public function deleteCategories(DeleteCategoryByIdRequest $request) {
         $categories = Category::truncate();
         return $categories;
     }
 
-    public function deleteCategoryById(int $categoryId) {
+    public function deleteCategoryById(int $categoryId, DeleteCategoryByIdRequest $request) {
         $category = Category::destroy($categoryId);
         return $category;
     }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Category;
 
+use App\Http\Requests\Category\DeleteCategoriesRequest;
+
 /**
  * @OA\Delete(
  *     path="/categories",
@@ -11,7 +13,7 @@ namespace App\Http\Controllers\Category;
  * )
  */
 class DeleteCategoriesController extends CategoryController {
-    public function __invoke() {
-        return $this->deleteCategories();
+    public function __invoke(DeleteCategoriesRequest $request) {
+        return $this->deleteCategories($request);
     }
 }

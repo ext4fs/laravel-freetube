@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Tag;
 
+use App\Http\Requests\Tag\GetTagsRequest;
+
 /**
  * @OA\Get (
  *     path="/tags",
@@ -14,7 +16,7 @@ namespace App\Http\Controllers\Tag;
  * )
  */
 class GetTagsController extends TagController {
-    public function __invoke() {
-       return $this->getTags();
+    public function __invoke(GetTagsRequest $request) {
+       return $this->getTags($request);
     }
 }

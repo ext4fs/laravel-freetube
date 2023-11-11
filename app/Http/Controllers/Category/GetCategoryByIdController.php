@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Category;
+use App\Http\Requests\Category\GetCategoryByIdRequest;
+
 /**
  * @OA\Get(
  *     path="/categories/{categoryId}",
@@ -10,7 +12,7 @@ namespace App\Http\Controllers\Category;
  * )
  */
 class GetCategoryByIdController extends CategoryController {
-    public function __invoke(int $categoryId) {
-        return $this->getCategoryById($categoryId);
+    public function __invoke(int $categoryId, GetCategoryByIdRequest $request) {
+        return $this->getCategoryById($categoryId, $request);
     }
 }

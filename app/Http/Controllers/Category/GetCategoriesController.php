@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Category;
 
+use App\Http\Requests\Category\GetCategoriesRequest;
+
 /**
  * @OA\Get (
  *     path="/categories",
@@ -14,7 +16,7 @@ namespace App\Http\Controllers\Category;
  * )
  */
 class GetCategoriesController extends CategoryController {
-    public function __invoke() {
-        return $this->getCategories();
+    public function __invoke(GetCategoriesRequest $request) {
+        return $this->getCategories($request);
     }
 }

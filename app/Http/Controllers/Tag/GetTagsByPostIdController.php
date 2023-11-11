@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Tag;
 
+use App\Http\Requests\GetTagsByPostIdRequest;
+
 /**
  * @OA\Get (
  *     path="/posts/{postId}/tags",
@@ -14,7 +16,7 @@ namespace App\Http\Controllers\Tag;
  * )
  */
 class GetTagsByPostIdController extends TagController {
-    public function __invoke(int $postId) {
-        return $this->getTagsByPostId($postId);
+    public function __invoke(int $postId, GetTagsByPostIdRequest $request) {
+        return $this->getTagsByPostId($postId, $request);
     }
 }
