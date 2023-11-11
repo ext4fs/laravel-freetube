@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 /**
  * @OA\Tag(
  *     name="File",
- *     description="API endpoints for interacting with files"
+ *     description="endpoints for interacting with files"
  * )
  */
 class FileController extends Controller {

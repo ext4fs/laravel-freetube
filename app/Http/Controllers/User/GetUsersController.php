@@ -6,7 +6,7 @@ namespace App\Http\Controllers\User;
  * @OA\Get(
  *     path="/users",
  *     tags={"User"},
- *     summary="Get all users",
+ *     summary="get all users",
  *     @OA\Response(response="200", description="list of all users")
  * )
  *

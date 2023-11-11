@@ -8,6 +8,7 @@ use App\Http\Requests\Tag\CreateTagRequest;
  * @OA\Post (
  *     path="/tags",
  *     tags={"Tag"},
+ *     summary="create a tag",
  *     @OA\Response(
  *         response="200",
  *         description="success"

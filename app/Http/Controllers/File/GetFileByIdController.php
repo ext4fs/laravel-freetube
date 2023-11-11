@@ -6,6 +6,7 @@ namespace App\Http\Controllers\File;
  * @OA\Get(
  *     path="/files/{fileId}",
  *     tags={"File"},
+ *     summary="get a file by given id",
  *     @OA\Response(response="200", description="success")
  * )
  */

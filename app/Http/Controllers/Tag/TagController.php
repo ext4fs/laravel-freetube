@@ -11,7 +11,7 @@ use App\Models\Tag;
 /**
  * @OA\Tag(
  *     name="Tag",
- *     description="API endpoints for interacting with tags",
+ *     description="endpoints for interacting with tags",
  * )
  */
 class TagController extends Controller

@@ -175,7 +175,7 @@
                 "tags": [
                     "Comment"
                 ],
-                "summary": "create a category",
+                "summary": "create a comment",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -232,7 +232,7 @@
         "/users/{userId}/comments": {
             "get": {
                 "tags": [
-                    "Comment"
+                    "User"
                 ],
                 "summary": "get comments by given author id",
                 "responses": {
@@ -269,7 +269,7 @@
         "/posts/{postId}/comments": {
             "get": {
                 "tags": [
-                    "Comment"
+                    "Post"
                 ],
                 "summary": "get comments by given post id",
                 "responses": {
@@ -295,6 +295,7 @@
                 "tags": [
                     "File"
                 ],
+                "summary": "get a file by given id",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -305,6 +306,7 @@
                 "tags": [
                     "File"
                 ],
+                "summary": "delete a file by given id",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -317,6 +319,7 @@
                 "tags": [
                     "File"
                 ],
+                "summary": "get all fiels",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -327,6 +330,7 @@
                 "tags": [
                     "File"
                 ],
+                "summary": "delete all files",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -339,6 +343,7 @@
                 "tags": [
                     "File"
                 ],
+                "summary": "download a binary file by given id",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -351,6 +356,7 @@
                 "tags": [
                     "File"
                 ],
+                "summary": "upload a file",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -409,7 +415,7 @@
                 "tags": [
                     "Post"
                 ],
-                "summary": "update a post by given post id",
+                "summary": "update a post by given id",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -483,6 +489,7 @@
                 "tags": [
                     "Tag"
                 ],
+                "summary": "get all tags",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -493,6 +500,7 @@
                 "tags": [
                     "Tag"
                 ],
+                "summary": "create a tag",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -503,6 +511,7 @@
                 "tags": [
                     "Tag"
                 ],
+                "summary": "delete all tags",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -515,6 +524,7 @@
                 "tags": [
                     "Tag"
                 ],
+                "summary": "get a tag by given id",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -525,6 +535,7 @@
                 "tags": [
                     "Tag"
                 ],
+                "summary": "update a tag by given id",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -535,6 +546,7 @@
                 "tags": [
                     "Tag"
                 ],
+                "summary": "delete a tag by given id",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -547,6 +559,7 @@
                 "tags": [
                     "Post"
                 ],
+                "summary": "get tags by given post id",
                 "responses": {
                     "200": {
                         "description": "success"
@@ -559,7 +572,7 @@
                 "tags": [
                     "User"
                 ],
-                "summary": "Get all users",
+                "summary": "get all users",
                 "responses": {
                     "200": {
                         "description": "list of all users"
@@ -779,7 +792,7 @@
         },
         {
             "name": "File",
-            "description": "API endpoints for interacting with files"
+            "description": "endpoints for interacting with files"
         },
         {
             "name": "Post",
@@ -787,7 +800,7 @@
         },
         {
             "name": "Tag",
-            "description": "API endpoints for interacting with tags"
+            "description": "endpoints for interacting with tags"
         },
         {
             "name": "User",

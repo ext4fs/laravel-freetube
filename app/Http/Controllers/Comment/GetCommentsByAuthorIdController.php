@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Comment;
 /**
  * @OA\Get(
  *     path="/users/{userId}/comments",
- *     tags={"Comment"},
+ *     tags={"User"},
  *     summary="get comments by given author id",
  *     @OA\Response(response="200", description="success"),
  * )

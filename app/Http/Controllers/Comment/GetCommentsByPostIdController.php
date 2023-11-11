@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Comment;
 /**
  * @OA\Get(
  *     path="/posts/{postId}/comments",
- *     tags={"Comment"},
+ *     tags={"Post"},
  *     summary="get comments by given post id",
  *     @OA\Response(response="200", description="success")
  * )

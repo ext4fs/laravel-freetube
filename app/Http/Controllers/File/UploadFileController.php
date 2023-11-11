@@ -8,6 +8,7 @@ use App\Http\Requests\File\UploadFileRequest;
  * @OA\Post(
  *     path="/files/upload",
  *     tags={"File"},
+ *     summary="upload a file",
  *     @OA\Response(response="200", description="success")
  * )
  */
