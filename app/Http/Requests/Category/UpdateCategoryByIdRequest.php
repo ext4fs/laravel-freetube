@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Requests\Comment;
+namespace App\Http\Requests\Category;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class UpdateCommentRequest extends FormRequest {
+class UpdateCategoryByIdRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool {
-        return Auth::id() === $this->input('user_id');
+        return false;
     }
 
     /**

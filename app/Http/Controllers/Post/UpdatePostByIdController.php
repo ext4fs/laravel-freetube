@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Post;
 
-use App\Http\Requests\Post\UpdatePostRequest;
+use App\Http\Requests\Post\UpdatePostByIdRequest;
 
 /**
  * @OA\Put(
@@ -16,7 +16,7 @@ use App\Http\Requests\Post\UpdatePostRequest;
  * )
  */
 class UpdatePostByIdController extends PostController {
-    public function __invoke($postId, UpdatePostRequest $request) {
+    public function __invoke($postId, UpdatePostByIdRequest $request) {
         return $this->updatePostById($postId, $request);
     }
 }

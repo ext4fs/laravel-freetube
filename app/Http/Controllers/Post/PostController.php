@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\CreatePostRequest;
-use App\Http\Requests\Post\UpdatePostRequest;
+use App\Http\Requests\Post\UpdatePostByIdRequest;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -49,7 +49,7 @@ class PostController extends Controller {
         return $post;
     }
 
-    public function updatePostById(int $postId, UpdatePostRequest $request) {
+    public function updatePostById(int $postId, UpdatePostByIdRequest $request) {
         $post = Post::find($postId);
         $user = $request->user();
         if (!$user->isAdmin() && !$user->can('update', $post)) {

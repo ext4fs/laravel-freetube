@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Comment;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Comment\CreateCommentRequest;
-use App\Http\Requests\Comment\UpdateCommentRequest;
+use App\Http\Requests\Comment\UpdateCommentByIdRequest;
 use App\Models\Comment;
 
 /**
@@ -41,7 +41,7 @@ class CommentController extends Controller {
         return $comment;
     }
 
-    public function updateCommentById(int $commentId, UpdateCommentRequest $request) {
+    public function updateCommentById(int $commentId, UpdateCommentByIdRequest $request) {
         $comment = Comment::find($commentId);
         $data = $request->input();
         $comment->update($data);

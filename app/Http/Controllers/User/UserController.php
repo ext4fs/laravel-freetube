@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUserRequest;
-use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Requests\User\UpdateUserByIdRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -31,6 +31,14 @@ class UserController extends Controller {
         return Auth::getUser();
     }
 
+    public function getUserByPostId(int $postId) {
+
+    }
+
+    public function getUserByCommentId(int $commentId) {
+
+    }
+
     public function createUser(CreateUserRequest $request) {
         $data = $request->input();
         $data['password'] = Hash::make($data['password']);
@@ -38,7 +46,7 @@ class UserController extends Controller {
         return $user;
     }
 
-    public function updateUserById(int $userId, UpdateUserRequest $request) {
+    public function updateUserById(int $userId, UpdateUserByIdRequest $request) {
         $user = User::find($userId);
         $data = $request->input();
         $user->update($data);

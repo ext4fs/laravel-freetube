@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\CreateCategoryRequest;
-use App\Http\Requests\Category\UpdateCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryByIdRequest;
 use App\Models\Category;
 
 /**
@@ -30,7 +30,7 @@ class CategoryController extends Controller {
         return $category;
     }
 
-    public function updateCategoryById(int $categoryId, UpdateCategoryRequest $request) {
+    public function updateCategoryById(int $categoryId, UpdateCategoryByIdRequest $request) {
         $data = $request->input();
         $category = Category::find($categoryId);
         $category->update($data);

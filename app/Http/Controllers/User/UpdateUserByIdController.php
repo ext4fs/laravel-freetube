@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Requests\User\UpdateUserByIdRequest;
 
 /**
  * @OA\Put(
@@ -13,7 +13,7 @@ use App\Http\Requests\User\UpdateUserRequest;
  * )
  */
 class UpdateUserByIdController extends UserController {
-    public function __invoke(int $userId, UpdateUserRequest $request) {
+    public function __invoke(int $userId, UpdateUserByIdRequest $request) {
         return $this->updateUserById($userId, $request);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Comment;
 
-use App\Http\Requests\Comment\UpdateCommentRequest;
+use App\Http\Requests\Comment\UpdateCommentByIdRequest;
 /**
  * @OA\Put(
  *     path="/comments/{commentId}",
@@ -12,7 +12,7 @@ use App\Http\Requests\Comment\UpdateCommentRequest;
  * )
  */
 class UpdateCommentByIdController extends CommentController {
-    public function __invoke(int $commentId, UpdateCommentRequest $request) {
+    public function __invoke(int $commentId, UpdateCommentByIdRequest $request) {
         return $this->updateCommentById($commentId, $request);
     }
 

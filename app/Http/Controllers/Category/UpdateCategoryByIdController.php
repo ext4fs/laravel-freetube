@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Category;
 
-use App\Http\Requests\Category\UpdateCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryByIdRequest;
 
 /**
  * @OA\Put(
@@ -13,7 +13,7 @@ use App\Http\Requests\Category\UpdateCategoryRequest;
  * )
  */
 class UpdateCategoryByIdController extends CategoryController {
-    public function __invoke(int $categoryId, UpdateCategoryRequest $request) {
+    public function __invoke(int $categoryId, UpdateCategoryByIdRequest $request) {
         return $this->updateCategoryById($categoryId, $request);
     }
 }
