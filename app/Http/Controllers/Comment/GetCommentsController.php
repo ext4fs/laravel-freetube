@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Comment;
+use App\Http\Requests\Comment\GetCommentsRequest;
+
 /**
  * @OA\Get(
  *     path="/comments",
@@ -10,7 +12,7 @@ namespace App\Http\Controllers\Comment;
  * )
  */
 class GetCommentsController extends CommentController {
-    public function __invoke() {
-        return $this->getComments();
+    public function __invoke(GetCommentsRequest $request) {
+        return $this->getComments($request);
     }
 }

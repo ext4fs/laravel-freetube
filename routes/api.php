@@ -91,6 +91,7 @@ Route::prefix('v1')->group(function() {
             Route::delete('/{userId}/posts/{postId}/comments', DeleteCommentsByPostIdAndAuthorIdController::class);
             Route::delete('/{userId}/comments', DeleteCommentsByAuthorIdController::class);
         });
+
         Route::get('/{userId}', GetUserByIdController::class);
         Route::get('/{userId}/posts', GetPostsByAuthorIdController::class);
         Route::get('/{userId}/comments', GetCommentsByAuthorIdController::class);

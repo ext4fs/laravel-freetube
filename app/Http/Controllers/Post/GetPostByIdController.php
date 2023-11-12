@@ -7,7 +7,13 @@ use App\Http\Requests\Post\GetPostByIdRequest;
  * @OA\Get(
  *     path="/posts/{postId}",
  *     tags={"Post"},
- *     @OA\Parameter(ref="#/components/parameters/postId"),
+ *     @OA\Parameter(name="postId",
+ *              in="path",
+ *              required=true,
+ *              @OA\Schema (
+ *                  type="integer"
+ *              )
+ *      ),
  *     summary="get a post by given id",
  *     @OA\Response(
  *         response="200",

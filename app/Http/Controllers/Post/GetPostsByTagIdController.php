@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Post;
 
-use App\Http\Requests\GetPostsByTagIdRequest;
+use App\Http\Requests\Post\GetPostsByTagIdRequest;
 
 /**
  * @OA\Get (
@@ -19,7 +19,7 @@ use App\Http\Requests\GetPostsByTagIdRequest;
  *     summary="get posts by given tag id",
  *     @OA\Response(
  *         response="200",
- *         description="post with given tag id"
+ *         description="posts with given tag id"
  *     )
  * )
  *

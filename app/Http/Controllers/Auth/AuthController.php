@@ -23,7 +23,7 @@ class AuthController extends Controller {
     }
 
     protected function verifyUserCreditials($email, $password) {
-        if (!$token = Auth::attempt(['email' => $email, 'password' => $password])) {
+        if (!$token = auth()->attempt(['email' => $email, 'password' => $password])) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
         return $this->respondWithToken($token);
@@ -50,7 +50,7 @@ class AuthController extends Controller {
     }
 
     public function logOut() {
-        Auth::logout();
+        auth()->logout();
         return true;
     }
 

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Post;
-use App\Http\Requests\DeletePostsRequest;
+
+use App\Http\Requests\Post\DeletePostsRequest;
 
 /**
  * @OA\Delete(

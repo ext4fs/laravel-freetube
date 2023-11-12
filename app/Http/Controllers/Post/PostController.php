@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\DeletePostsRequest;
-use App\Http\Requests\GetPostsByCategoryIdRequest;
-use App\Http\Requests\GetPostsByTagIdRequest;
 use App\Http\Requests\Post\CreatePostRequest;
 use App\Http\Requests\Post\DeletePostByIdRequest;
 use App\Http\Requests\Post\DeletePostsByAuthorIdRequest;
+use App\Http\Requests\Post\DeletePostsRequest;
 use App\Http\Requests\Post\GetPostByIdRequest;
 use App\Http\Requests\Post\GetPostsByAuthorIdRequest;
+use App\Http\Requests\Post\GetPostsByCategoryIdRequest;
+use App\Http\Requests\Post\GetPostsByTagIdRequest;
 use App\Http\Requests\Post\GetPostsRequest;
 use App\Http\Requests\Post\UpdatePostByIdRequest;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 /**
  * @OA\Tag(
@@ -33,7 +33,9 @@ use Illuminate\Support\Facades\Auth;
  *     parameter="postId",
  *     name="postId",
  *     description="the idenfifier of a post in urlpath",
- *     schema="#/components/schemas/PostId",
+ *     @OA\Schema(
+ *      ref="#/components/schemas/PostId",
+ *     ),
  *     in="path",
  *     required=true
  *   )
@@ -51,12 +53,12 @@ class PostController extends Controller {
     }
 
     public function getPostsByAuthorId(string $authorId, GetPostsByAuthorIdRequest $request) {
-        $posts = Post::where('author_id', $authorId)->get();
+        $posts = User::find($authorId)->posts;
         return $posts;
     }
 
     public function getPostsByCategoryId(int $categoryId, GetPostsByCategoryIdRequest $request) {
-        $posts = Post::where('category_id', $categoryId)->get();
+        $posts = Category::find($categoryId)->posts;
         return $posts;
     }
 
@@ -67,6 +69,7 @@ class PostController extends Controller {
 
     public function createPost(CreatePostRequest $request) {
         $data = $request->validated();
+        $data['author_id'] = auth()->id();
         $post = Post::create($data);
         return $post;
     }
@@ -89,8 +92,8 @@ class PostController extends Controller {
         return $post;
     }
 
-    public function deletePostsByAuthorId(string $userId, DeletePostsByAuthorIdRequest $request) {
-        $posts = Post::where('author_id', $userId);
+    public function deletePostsByAuthorId(string $authorId, DeletePostsByAuthorIdRequest $request) {
+        $posts = User::find($authorId)->posts;
         $posts->delete();
         return $posts;
     }

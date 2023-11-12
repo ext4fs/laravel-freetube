@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Comment;
+use App\Http\Requests\Comment\GetCommentsByPostIdRequest;
+
 /**
  * @OA\Get(
  *     path="/posts/{postId}/comments",
@@ -10,7 +12,7 @@ namespace App\Http\Controllers\Comment;
  * )
  */
 class GetCommentsByPostIdController extends CommentController {
-    public function __invoke(int $postId) {
-        return $this->getCommentsByPostId($postId);
+    public function __invoke(int $postId, GetCommentsByPostIdRequest $request) {
+        return $this->getCommentsByPostId($postId, $request);
     }
 }

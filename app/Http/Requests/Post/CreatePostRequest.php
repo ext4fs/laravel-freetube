@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * @OA\Schema(
@@ -30,7 +29,9 @@ class CreatePostRequest extends FormRequest {
 
     public function rules(): array {
         return [
-            //
+            'category_id' => ['required', 'integer'],
+            'title' => ['required', 'string'],
+            'description' => ['required', 'string']
         ];
     }
 }

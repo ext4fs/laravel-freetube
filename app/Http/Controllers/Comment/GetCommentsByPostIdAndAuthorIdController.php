@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Comment;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GetCommentsByPostIdAndAuthorIdRequest;
 
 /**
  * @OA\Get(
@@ -17,7 +18,7 @@ use App\Http\Controllers\Controller;
  */
 class GetCommentsByPostIdAndAuthorIdController extends CommentController
 {
-    public function __invoke(int $postId, string $userId) {
-        return $this->getCommentsByPostIdAndAuthorId($postId, $userId);
+    public function __invoke(int $postId, string $userId, GetCommentsByPostIdAndAuthorIdRequest $request) {
+        return $this->getCommentsByPostIdAndAuthorId($postId, $userId, $request);
     }
 }

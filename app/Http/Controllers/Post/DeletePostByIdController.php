@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Post;
 
-use App\Http\Requests\DeletePostsRequest;
+use App\Http\Requests\Post\DeletePostByIdRequest;
 
 /**
  * @OA\Delete(
@@ -13,7 +13,9 @@ use App\Http\Requests\DeletePostsRequest;
  *             name="postId",
  *             in="path",
  *             required=true,
- *             ref="#/components/schemas/PostId",
+ *             @OA\Schema (
+ *                 type="integer"
+ *             )
  *       ),
  *     security={{ "bearerAuth": {}}},
  *     @OA\Response(
@@ -23,7 +25,7 @@ use App\Http\Requests\DeletePostsRequest;
  * )
  */
 class DeletePostByIdController extends PostController {
-    public function __invoke(int $postId, DeletePostsRequest $request) {
+    public function __invoke(int $postId, DeletePostByIdRequest $request) {
         return $this->deletePostById($postId, $request);
     }
 }

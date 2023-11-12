@@ -4,7 +4,7 @@ namespace App\Http\Requests\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetPostsRequest extends FormRequest
+class GetPostsByTagIdRequest extends FormRequest
 {
     public function authorize(): bool
     {

@@ -15,13 +15,15 @@ use App\Http\Requests\Post\UpdatePostByIdRequest;
  *            name="postId",
  *            in="path",
  *            required=true,
- *            ref="#/components/schemas/PostId",
+ *            @OA\Schema(
+ *                 type="integer"
+ *             ),
  *      ),
  *     summary="update a post by given id",
  *     security={{ "bearerAuth": {}}},
  *     @OA\Response(
  *         response="200",
- *         description="success",
+ *         description="updated post with given id",
  *     )
  * )
  */

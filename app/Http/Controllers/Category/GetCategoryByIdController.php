@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Category;
+
 use App\Http\Requests\Category\GetCategoryByIdRequest;
 
 /**

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Post;
-use App\Http\Requests\GetPostsByCategoryIdRequest;
+
+use App\Http\Requests\Post\GetPostsByCategoryIdRequest;
 
 /**
  * @OA\Get(

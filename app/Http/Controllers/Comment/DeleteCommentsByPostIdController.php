@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Comment;
+use App\Http\Requests\DeleteCommentsByPostIdRequest;
+
 /**
  * @OA\Delete(
  *     path="/posts/{postId}/comments",
@@ -11,7 +13,7 @@ namespace App\Http\Controllers\Comment;
  * )
  */
 class DeleteCommentsByPostIdController extends CommentController {
-    public function __invoke(int $postId) {
-        return $this->deleteCommentsByPostId($postId);
+    public function __invoke(int $postId, DeleteCommentsByPostIdRequest $request) {
+        return $this->deleteCommentsByPostId($postId, $request);
     }
 }

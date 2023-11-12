@@ -15,7 +15,7 @@ use App\Http\Requests\Post\CreatePostRequest;
  *      ),
  *     @OA\Response(
  *         response="200",
- *         description="success"
+ *         description="a created post"
  *     )
  * )
  */

@@ -468,7 +468,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "success"
+                        "description": "a created post"
                     }
                 },
                 "security": [
@@ -502,7 +502,12 @@
                 "summary": "get a post by given id",
                 "parameters": [
                     {
-                        "$ref": "#/components/parameters/postId"
+                        "name": "postId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
@@ -518,7 +523,12 @@
                 "summary": "update a post by given id",
                 "parameters": [
                     {
-                        "$ref": "#/components/schemas/PostId"
+                        "name": "postId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "requestBody": {
@@ -532,7 +542,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "success"
+                        "description": "updated post with given id"
                     }
                 },
                 "security": [
@@ -548,7 +558,12 @@
                 "summary": "delete a post by given id",
                 "parameters": [
                     {
-                        "$ref": "#/components/schemas/PostId"
+                        "name": "postId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
@@ -581,7 +596,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "a post"
+                        "description": "posts with given author id"
                     }
                 }
             },
@@ -653,7 +668,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "post with given tag id"
+                        "description": "posts with given tag id"
                     }
                 }
             }
@@ -899,7 +914,7 @@
             },
             "SignUpRequest": {
                 "properties": {
-                    "username": {
+                    "name": {
                         "type": "string"
                     },
                     "email": {
@@ -1056,7 +1071,9 @@
                 "in": "path",
                 "description": "the idenfifier of a post in urlpath",
                 "required": true,
-                "schema": "#/components/schemas/PostId"
+                "schema": {
+                    "$ref": "#/components/schemas/PostId"
+                }
             }
         },
         "securitySchemes": {

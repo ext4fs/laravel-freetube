@@ -18,7 +18,7 @@ use App\Http\Requests\Post\GetPostsByAuthorIdRequest;
  *     summary="get posts by given author id",
  *     @OA\Response(
  *         response="200",
- *         description="a post"
+ *         description="posts with given author id"
  *     )
  * )
  */

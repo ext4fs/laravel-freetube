@@ -10,7 +10,7 @@ namespace App\Http\Controllers\Comment;
  * )
  */
 class GetCommentsByAuthorIdController extends CommentController {
-    public function __invoke(int $authorId) {
-        return $this->getCommentsByAuthorId($authorId);
+    public function __invoke(string $userId) {
+        return $this->getCommentsByAuthorId($userId);
     }
 }

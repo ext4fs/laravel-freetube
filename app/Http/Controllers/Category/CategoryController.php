@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\CreateCategoryRequest;
+use App\Http\Requests\Category\DeleteCategoriesRequest;
 use App\Http\Requests\Category\DeleteCategoryByIdRequest;
 use App\Http\Requests\Category\GetCategoriesRequest;
 use App\Http\Requests\Category\GetCategoryByIdRequest;
@@ -46,7 +47,7 @@ class CategoryController extends Controller {
         return $category;
     }
 
-    public function deleteCategories(DeleteCategoryByIdRequest $request) {
+    public function deleteCategories(DeleteCategoriesRequest $request) {
         $categories = Category::truncate();
         return $categories;
     }
