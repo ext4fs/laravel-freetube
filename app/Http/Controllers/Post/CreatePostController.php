@@ -10,6 +10,9 @@ use App\Http\Requests\Post\CreatePostRequest;
  *     tags={"Post"},
  *     summary="create a post",
  *     security={{ "bearerAuth": {}}},
+ *     @OA\RequestBody (
+ *          @OA\JsonContent(ref="#/components/schemas/CreatePostRequest")
+ *      ),
  *     @OA\Response(
  *         response="200",
  *         description="success"

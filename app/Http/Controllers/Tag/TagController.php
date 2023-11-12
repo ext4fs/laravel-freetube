@@ -18,6 +18,12 @@ use App\Models\Tag;
  *     name="Tag",
  *     description="endpoints for interacting with tags",
  * )
+ * @OA\Schema(
+ *     schema="TagId",
+ *     type="integer",
+ *     format="uint32",
+ *     description="the unique identifier of a tag"
+ *   )
  */
 class TagController extends Controller
 {

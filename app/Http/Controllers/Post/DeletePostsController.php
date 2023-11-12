@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Post;
+use App\Http\Requests\DeletePostsRequest;
+
 /**
  * @OA\Delete(
  *     path="/posts",
@@ -14,7 +16,7 @@ namespace App\Http\Controllers\Post;
  * )
  */
 class DeletePostsController extends PostController {
-    public function __invoke() {
-        return $this->deletePosts();
+    public function __invoke(DeletePostsRequest $request) {
+        return $this->deletePosts($request);
     }
 }

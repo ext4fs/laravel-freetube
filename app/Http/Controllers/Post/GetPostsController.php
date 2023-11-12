@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Post;
+use App\Http\Requests\Post\GetPostsRequest;
+
 /**
  * @OA\Get(
  *     path="/posts",
@@ -9,12 +11,12 @@ namespace App\Http\Controllers\Post;
  *
  *     @OA\Response(
  *         response="200",
- *         description="success"
+ *         description="all posts"
  *     )
  * )
  */
 class GetPostsController extends PostController {
-    public function __invoke() {
-        return $this->getPosts();
+    public function __invoke(GetPostsRequest $request) {
+        return $this->getPosts($request);
     }
 }

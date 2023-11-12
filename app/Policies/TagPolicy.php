@@ -11,15 +11,15 @@ class TagPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): bool
+    public function getAny(User $user): bool
     {
-        //
+
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Tag $tag): bool
+    public function get(User $user, Tag $tag): bool
     {
         //
     }

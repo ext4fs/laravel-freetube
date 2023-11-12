@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Comment;
 /**
- * @OA\Post(
+ * @OA\Delete(
  *     path="/posts/{postId}/comments",
  *     tags={"Post"},
  *     summary="delete comments by given post id",

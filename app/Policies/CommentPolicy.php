@@ -8,11 +8,11 @@ use Illuminate\Auth\Access\Response;
 
 class CommentPolicy {
 
-    public function viewAny(User $user): bool {
+    public function getAny(User $user): bool {
         return true;
     }
 
-    public function view(User $user, Comment $comment): bool {
+    public function get(User $user, Comment $comment): bool {
         return true;
     }
 

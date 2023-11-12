@@ -15,6 +15,12 @@ use App\Models\Category;
  *     name="Category",
  *     description="endpoints for interacting with categories",
  * )
+ * @OA\Schema(
+ *     schema="CategoryId",
+ *     type="integer",
+ *     format="uint32",
+ *     description="the unique identifier of a category"
+ *   )
  */
 class CategoryController extends Controller {
     public function getCategories(GetCategoriesRequest $request) {

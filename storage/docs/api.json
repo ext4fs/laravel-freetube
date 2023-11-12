@@ -349,7 +349,7 @@
                     }
                 }
             },
-            "post": {
+            "delete": {
                 "tags": [
                     "Post"
                 ],
@@ -448,7 +448,7 @@
                 "summary": "get all posts",
                 "responses": {
                     "200": {
-                        "description": "success"
+                        "description": "all posts"
                     }
                 }
             },
@@ -457,6 +457,15 @@
                     "Post"
                 ],
                 "summary": "create a post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePostRequest"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "success"
@@ -491,9 +500,14 @@
                     "Post"
                 ],
                 "summary": "get a post by given id",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/postId"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "success"
+                        "description": "a post"
                     }
                 }
             },
@@ -502,6 +516,20 @@
                     "Post"
                 ],
                 "summary": "update a post by given id",
+                "parameters": [
+                    {
+                        "$ref": "#/components/schemas/PostId"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePostRequest"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "success"
@@ -518,6 +546,11 @@
                     "Post"
                 ],
                 "summary": "delete a post by given id",
+                "parameters": [
+                    {
+                        "$ref": "#/components/schemas/PostId"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "success"
@@ -530,15 +563,25 @@
                 ]
             }
         },
-        "/users/{authorId}/posts": {
+        "/users/{userId}/posts": {
             "get": {
                 "tags": [
                     "User"
                 ],
                 "summary": "get posts by given author id",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "success"
+                        "description": "a post"
                     }
                 }
             },
@@ -547,6 +590,16 @@
                     "User"
                 ],
                 "summary": "delete posts by given author id",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "success"
@@ -565,9 +618,19 @@
                     "Category"
                 ],
                 "summary": "get posts by given category id",
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "success"
+                        "description": "posts with given category id"
                     }
                 }
             }
@@ -578,9 +641,19 @@
                     "Tag"
                 ],
                 "summary": "get posts by given tag id",
+                "parameters": [
+                    {
+                        "name": "tagId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "success"
+                        "description": "post with given tag id"
                     }
                 }
             }
@@ -799,15 +872,67 @@
     },
     "components": {
         "schemas": {
+            "CategoryId": {
+                "description": "the unique identifier of a category",
+                "type": "integer",
+                "format": "uint32"
+            },
+            "CommentId": {
+                "description": "the unique identifier of a comment",
+                "type": "integer",
+                "format": "uint32"
+            },
+            "PostId": {
+                "description": "the unique identifier of post",
+                "type": "integer",
+                "format": "uint32"
+            },
+            "TagId": {
+                "description": "the unique identifier of a tag",
+                "type": "integer",
+                "format": "uint32"
+            },
+            "UserId": {
+                "description": "the unique identifier of a user",
+                "type": "string",
+                "format": "uuid4"
+            },
             "SignUpRequest": {
                 "properties": {
-                    "name": {
+                    "username": {
                         "type": "string"
                     },
                     "email": {
-                        "type": "string"
+                        "type": "string",
+                        "format": "email"
                     },
                     "password": {
+                        "type": "string",
+                        "format": "password"
+                    }
+                },
+                "type": "object"
+            },
+            "CreatePostRequest": {
+                "properties": {
+                    "category_id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdatePostRequest": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
                         "type": "string"
                     }
                 },
@@ -923,6 +1048,15 @@
                     }
                 },
                 "type": "object"
+            }
+        },
+        "parameters": {
+            "postId": {
+                "name": "postId",
+                "in": "path",
+                "description": "the idenfifier of a post in urlpath",
+                "required": true,
+                "schema": "#/components/schemas/PostId"
             }
         },
         "securitySchemes": {

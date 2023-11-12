@@ -20,6 +20,12 @@ use App\Models\Comment;
  *     name="Comment",
  *     description="endpoints for interacting with comments",
  * )
+ * @OA\Schema(
+ *     schema="CommentId",
+ *     type="integer",
+ *     format="uint32",
+ *     description="the unique identifier of a comment"
+ *   )
  */
 class CommentController extends Controller {
 

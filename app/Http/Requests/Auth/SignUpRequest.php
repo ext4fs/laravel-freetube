@@ -8,16 +8,18 @@ use Illuminate\Foundation\Http\FormRequest;
  * @OA\Schema(
  *     schema="SignUpRequest",
  *     @OA\Property (
- *          property="name",
+ *          property="username",
  *          type="string",
  *     ),
  *     @OA\Property (
  *          property="email",
  *          type="string",
+ *          format="email",
  *     ),
  *     @OA\Property (
  *          property="password",
- *          type="string"
+ *          type="string",
+ *          format="password",
  *     )
  * )
  *

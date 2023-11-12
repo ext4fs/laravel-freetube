@@ -19,6 +19,13 @@ use Illuminate\Support\Facades\Hash;
  *     name="User",
  *     description="endpoints for interacting with users",
  * )
+ * @OA\Schema(
+ *    schema="UserId",
+ *    type="string",
+ *    format="uuid4",
+ *    description="the unique identifier of a user"
+ *  )
+ *
  */
 class UserController extends Controller {
 
