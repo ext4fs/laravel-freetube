@@ -9,6 +9,7 @@ use App\Http\Requests\User\GetMeRequest;
  *     path="/users/me",
  *     tags={"User"},
  *     summary="get current authorized user",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(
  *         response="200",
  *         description="sucess",

@@ -15,11 +15,11 @@
     "servers": [
         {
             "url": "http://127.0.0.1:80/api/v1",
-            "description": "API server"
+            "description": "api server"
         },
         {
             "url": "http://localhost/api/v1",
-            "description": "API server"
+            "description": "api server"
         }
     ],
     "paths": {
@@ -46,7 +46,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/auth/refresh": {
@@ -59,7 +64,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/auth/sign-up": {
@@ -110,7 +120,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -121,7 +136,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/categories/{categoryId}": {
@@ -145,7 +165,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -156,7 +181,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/comments": {
@@ -180,7 +210,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -191,7 +226,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/comments/{commentId}": {
@@ -215,7 +255,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -226,7 +271,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/users/{userId}/comments": {
@@ -250,10 +300,26 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/users/{userId}/posts/{postId}/comments": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "get comments by post and author ids",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "User"
@@ -263,7 +329,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/posts/{postId}/comments": {
@@ -287,7 +358,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/files/{fileId}": {
@@ -385,7 +461,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -396,7 +477,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/posts/{postId}": {
@@ -420,7 +506,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -431,7 +522,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/users/{authorId}/posts": {
@@ -455,7 +551,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/categories/{categoryId}/posts": {
@@ -505,7 +606,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -516,7 +622,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/tags/{tagId}": {
@@ -540,7 +651,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -551,7 +667,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/posts/{postId}/tags": {
@@ -588,7 +709,12 @@
                     "200": {
                         "description": "success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -599,7 +725,12 @@
                     "200": {
                         "description": "Delete all users."
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/users/{userId}": {
@@ -623,7 +754,12 @@
                     "200": {
                         "description": "Success"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -634,7 +770,12 @@
                     "200": {
                         "description": "Delete user by given id."
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/users/me": {
@@ -647,7 +788,12 @@
                     "200": {
                         "description": "sucess"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
     },
@@ -686,13 +832,16 @@
                     "id": {
                         "type": "integer"
                     },
+                    "parentId": {
+                        "type": "integer"
+                    },
                     "postId": {
                         "type": "integer"
                     },
                     "authorId": {
                         "type": "uuid"
                     },
-                    "message": {
+                    "body": {
                         "type": "string"
                     },
                     "rating": {
@@ -735,7 +884,7 @@
                     "title": {
                         "type": "string"
                     },
-                    "description": {
+                    "body": {
                         "type": "string"
                     },
                     "views": {
@@ -775,12 +924,21 @@
                 },
                 "type": "object"
             }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "login or sign up with email and password to get jwt token",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
         }
     },
     "tags": [
         {
             "name": "Auth",
-            "description": "endpoints for JWT authorization"
+            "description": "endpoints for JWT authentication"
         },
         {
             "name": "Category",

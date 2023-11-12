@@ -8,6 +8,7 @@ use App\Http\Requests\Category\DeleteCategoryByIdRequest;
  *     path="/categories/{categoryId}",
  *     tags={"Category"},
  *     summary="delete a category by given id",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(response="200", description="success"),
  * )
  */

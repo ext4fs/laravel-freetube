@@ -43,6 +43,11 @@ class CommentController extends Controller {
         return $comments;
     }
 
+    public function getCommentsByPostIdAndAuthorId(int $postId, string $userId) {
+        $comments = Comment::where('post_id', $postId)->where('author_id', $userId)->get();
+        return $comments;
+    }
+
     public function createComment(CreateCommentRequest $request) {
         $data = $request->input();
         $comment = Comment::create($data);

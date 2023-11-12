@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * @OA\Tag(
  *     name="Auth",
- *     description="endpoints for JWT authorization",
+ *     description="endpoints for JWT authentication",
  * )
  */
 class AuthController extends Controller {

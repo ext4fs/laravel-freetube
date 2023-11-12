@@ -15,6 +15,7 @@ use App\Http\Controllers\Comment\DeleteCommentByIdController;
 use App\Http\Controllers\Comment\DeleteCommentsByAuthorIdController;
 use App\Http\Controllers\Comment\DeleteCommentsByPostIdAndAuthorIdController;
 use App\Http\Controllers\Comment\DeleteCommentsByPostIdController;
+use App\Http\Controllers\Comment\GetCommentsByPostIdAndAuthorIdController;
 use App\Http\Controllers\Comment\UpdateCommentByIdController;
 use App\Http\Controllers\Comment\GetCommentByIdController;
 use App\Http\Controllers\Comment\GetCommentsByAuthorIdController;
@@ -70,7 +71,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function() {
 
-    Route::get('/', [Controller::class, 'getHello']);
+    Route::get('/', [Controller::class, 'index']);
 
     Route::prefix('auth')->group(function () {
         Route::post('/login', LogInController::class);
@@ -93,6 +94,7 @@ Route::prefix('v1')->group(function() {
         Route::get('/{userId}', GetUserByIdController::class);
         Route::get('/{userId}/posts', GetPostsByAuthorIdController::class);
         Route::get('/{userId}/comments', GetCommentsByAuthorIdController::class);
+        Route::get('/{userId}/posts/{postId}/comments', GetCommentsByPostIdAndAuthorIdController::class);
     })->where(['userId' => '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$', 'postId' => '^[0-9]+$']);
 
     Route::prefix('posts')->group(function() {

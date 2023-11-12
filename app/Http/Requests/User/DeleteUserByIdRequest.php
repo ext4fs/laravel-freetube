@@ -11,7 +11,7 @@ class DeleteUserByIdRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->id() == $this->id;
     }
 
     /**

@@ -9,6 +9,7 @@ use App\Http\Requests\User\DeleteUserByIdRequest;
  *     path="/users/{userId}",
  *     tags={"User"},
  *     summary="delete a user by given id",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(response="200", description="Delete user by given id.")
  * )
  */

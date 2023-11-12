@@ -9,6 +9,7 @@ use App\Http\Requests\Tag\DeleteTagsRequest;
  *     path="/tags",
  *     tags={"Tag"},
  *     summary="delete all tags",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(
  *         response="200",
  *         description="success"

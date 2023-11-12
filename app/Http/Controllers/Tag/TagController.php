@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Tag;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\GetTagsByPostIdRequest;
 use App\Http\Requests\Tag\CreateTagRequest;
 use App\Http\Requests\Tag\DeleteTagByIdRequest;
 use App\Http\Requests\Tag\DeleteTagsRequest;
 use App\Http\Requests\Tag\GetTagByIdRequest;
+use App\Http\Requests\Tag\GetTagsByPostIdRequest;
 use App\Http\Requests\Tag\GetTagsRequest;
 use App\Http\Requests\Tag\UpdateTagByIdRequest;
 use App\Models\Post;

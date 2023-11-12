@@ -13,6 +13,10 @@ use Illuminate\Database\Eloquent\Model;
  *         type="integer"
  *     ),
  *     @OA\Property (
+ *         property="parentId",
+ *         type="integer",
+ *     ),
+ *     @OA\Property (
  *          property="postId",
  *          type="integer"
  *      ),
@@ -21,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  *         type="uuid"
  *     ),
  *     @OA\Property (
- *         property="message",
+ *         property="body",
  *         type="string"
  *     ),
  *     @OA\Property (

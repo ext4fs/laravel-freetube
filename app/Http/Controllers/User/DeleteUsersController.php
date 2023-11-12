@@ -9,6 +9,7 @@ use App\Http\Requests\User\DeleteUsersRequest;
  *     path="/users",
  *     tags={"User"},
  *     summary="delete all users",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(response="200", description="Delete all users.")
  * )
  */

@@ -6,22 +6,18 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class MakeNotEmpty {
+class InjectResultMiddleware
+{
     /**
      * Handle an incoming request.
      *
-     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response {
         $response = $next($request);
         if ($response->isSuccessful()) {
-            return response()->json([
-                "success" => true,
-                "data" => $response->original
-            ]);
+            return response()->json(['success' => true, 'data' => json_decode($response->getContent())]);
         }
-        return response()->json([
-            "success" => false
-        ]);
+        return response()->json(['success' => false]);
     }
 }

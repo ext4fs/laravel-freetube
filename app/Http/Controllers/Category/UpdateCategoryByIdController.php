@@ -9,6 +9,7 @@ use App\Http\Requests\Category\UpdateCategoryByIdRequest;
  *     path="/categories/{categoryId}",
  *     tags={"Category"},
  *     summary="update a category by given id",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(response="200", description="success"),
  * )
  */

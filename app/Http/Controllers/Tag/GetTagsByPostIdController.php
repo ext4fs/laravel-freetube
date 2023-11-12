@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Tag;
 
-use App\Http\Requests\GetTagsByPostIdRequest;
+use App\Http\Requests\Tag\GetTagsByPostIdRequest;
 
 /**
  * @OA\Get (

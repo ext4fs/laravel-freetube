@@ -9,6 +9,7 @@ use App\Http\Requests\Tag\DeleteTagByIdRequest;
  *     path="/tags/{tagId}",
  *     tags={"Tag"},
  *     summary="delete a tag by given id",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(
  *         response="200",
  *         description="success"

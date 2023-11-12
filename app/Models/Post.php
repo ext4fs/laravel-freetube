@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  *         type="string",
  *     ),
  *     @OA\Property (
- *         property="description",
+ *         property="body",
  *         type="string",
  *     ),
  *     @OA\Property (

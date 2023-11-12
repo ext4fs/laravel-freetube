@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Post;
  *     path="/users/{authorId}/posts",
  *     tags={"User"},
  *     summary="delete posts by given author id",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(
  *         response="200",
  *         description="success"

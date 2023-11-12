@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Post;
  *     path="/posts/{postId}",
  *     tags={"Post"},
  *     summary="delete a post by given id",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(
  *         response="200",
  *         description="success"

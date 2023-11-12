@@ -8,6 +8,7 @@ use App\Http\Requests\Comment\CreateCommentRequest;
  *     path="/comments",
  *     tags={"Comment"},
  *     summary="create a comment",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(response="200", description="success"),
  * )
  */

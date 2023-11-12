@@ -21,18 +21,26 @@ use Illuminate\Routing\Controller as BaseController;
  * )
  * @OA\Server(
  *      url="http://127.0.0.1:80/api/v1",
- *      description="API server"
+ *      description="api server"
  * )
  * @OA\Server(
  *      url="http://localhost/api/v1",
- *      description="API server"
+ *      description="api server"
  * )
+ * @OA\SecurityScheme(
+ *      type="http",
+ *      description="login or sign up with email and password to get jwt token",
+ *      in="header",
+ *      scheme="bearer",
+ *      bearerFormat="JWT",
+ *      securityScheme="bearerAuth",
+ *  )
  */
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function getHello() {
+    public function index() {
         return 'Hello, World!';
     }
 }

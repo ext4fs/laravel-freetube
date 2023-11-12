@@ -9,6 +9,7 @@ use App\Http\Requests\Post\UpdatePostByIdRequest;
  *     path="/posts/{postId}",
  *     tags={"Post"},
  *     summary="update a post by given id",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(
  *         response="200",
  *         description="success",

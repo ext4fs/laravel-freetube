@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Auth;
  *     path="/auth/logout",
  *     summary="log out from the account",
  *     tags={"Auth"},
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(response="200", description="success")
  * )
  */

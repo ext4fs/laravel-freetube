@@ -9,6 +9,7 @@ use App\Http\Requests\Tag\CreateTagRequest;
  *     path="/tags",
  *     tags={"Tag"},
  *     summary="create a tag",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(
  *         response="200",
  *         description="success"

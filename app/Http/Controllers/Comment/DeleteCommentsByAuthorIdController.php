@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Comment;
  *     path="/users/{userId}/comments",
  *     tags={"User"},
  *     summary="delete comments by given author id",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(response="200", description="success"),
  * )
  */

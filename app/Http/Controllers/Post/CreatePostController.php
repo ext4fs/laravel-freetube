@@ -9,6 +9,7 @@ use App\Http\Requests\Post\CreatePostRequest;
  *     path="/posts",
  *     tags={"Post"},
  *     summary="create a post",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(
  *         response="200",
  *         description="success"

@@ -9,6 +9,7 @@ use App\Http\Requests\User\CreateUserRequest;
  *     path="/users",
  *     tags={"User"},
  *     summary="create a user",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(response="200", description="success")
  * )
  */

@@ -9,6 +9,7 @@ use App\Http\Requests\Category\CreateCategoryRequest;
  *     path="/categories",
  *     tags={"Category"},
  *     summary="create a category",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(response="200", description="success"),
  * )
  */

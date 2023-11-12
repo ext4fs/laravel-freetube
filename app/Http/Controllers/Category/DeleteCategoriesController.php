@@ -9,6 +9,7 @@ use App\Http\Requests\Category\DeleteCategoriesRequest;
  *     path="/categories",
  *     tags={"Category"},
  *     summary="delete all categories",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(response="200", description="success"),
  * )
  */

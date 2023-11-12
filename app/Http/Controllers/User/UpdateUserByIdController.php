@@ -9,6 +9,7 @@ use App\Http\Requests\User\UpdateUserByIdRequest;
  *     path="/users/{userId}",
  *     tags={"User"},
  *     summary="update a user by given id",
+ *     security={{ "bearerAuth": {}}},
  *     @OA\Response(response="200", description="Success")
  * )
  */
