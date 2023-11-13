@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Tag;
 
+use App\Models\Tag;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DeleteTagByIdRequest extends FormRequest
@@ -11,7 +12,8 @@ class DeleteTagByIdRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        $tag = Tag::find($this->route('tagId'))->get();
+        return $this->user()->can('delete', $tag);
     }
 
     /**

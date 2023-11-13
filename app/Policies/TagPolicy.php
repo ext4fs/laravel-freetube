@@ -8,49 +8,30 @@ use Illuminate\Auth\Access\Response;
 
 class TagPolicy
 {
-    /**
-     * Determine whether the user can view any models.
-     */
-    public function getAny(User $user): bool
-    {
-
+    public function getAny(User $user): bool {
+        return true;
     }
 
-    /**
-     * Determine whether the user can view the model.
-     */
-    public function get(User $user, Tag $tag): bool
-    {
-        //
+    public function get(User $user, Tag $tag): bool {
+        return true;
     }
 
-    /**
-     * Determine whether the user can create models.
-     */
-    public function create(User $user): bool
-    {
-        //
+    public function create(User $user): bool {
+        return true;
     }
 
-    /**
-     * Determine whether the user can update the model.
-     */
-    public function update(User $user, Tag $tag): bool
-    {
-        //
+    public function update(User $user, Tag $tag): bool {
+        return $user->is_admin;
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     */
-    public function delete(User $user, Tag $tag): bool
-    {
-        //
+    public function delete(User $user, Tag $tag): bool {
+        return $user->is_admin;
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
+    public function deleteAny(User $user): bool {
+        return $user->is_admin;
+    }
+
     public function restore(User $user, Tag $tag): bool
     {
         //

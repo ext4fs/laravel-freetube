@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\User;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DeleteUserByIdRequest extends FormRequest
@@ -9,9 +10,9 @@ class DeleteUserByIdRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
-    {
-        return auth()->id() == $this->id;
+    public function authorize(): bool {
+        $user = User::find($this->route('userId'))->get();
+        return $this->user()->can('delete', $user);
     }
 
     /**

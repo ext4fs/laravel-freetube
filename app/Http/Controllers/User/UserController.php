@@ -8,8 +8,10 @@ use App\Http\Requests\User\DeleteUserByIdRequest;
 use App\Http\Requests\User\DeleteUsersRequest;
 use App\Http\Requests\User\GetMeRequest;
 use App\Http\Requests\User\GetUserByIdRequest;
+use App\Http\Requests\User\GetUserByPostIdRequest;
 use App\Http\Requests\User\GetUsersRequest;
 use App\Http\Requests\User\UpdateUserByIdRequest;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -34,13 +36,18 @@ class UserController extends Controller {
         return $users;
     }
 
-    public function getUserById(int $userId, GetUserByIdRequest $request) {
+    public function getUserById(string $userId, GetUserByIdRequest $request) {
         $user = User::find($userId);
         return $user;
     }
 
     public function getMe(GetMeRequest $request) {
         return Auth::getUser();
+    }
+
+    public function getUserByPostId(int $postId, GetUserByPostIdRequest $request) {
+        $user = Post::find($postId)->author();
+        return $user;
     }
 
     public function createUser(CreateUserRequest $request) {

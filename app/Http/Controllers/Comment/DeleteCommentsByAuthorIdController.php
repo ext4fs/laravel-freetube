@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Comment;
-use App\Http\Requests\DeleteCommentsByAuthorIdRequest;
+use App\Http\Requests\Comment\DeleteCommentsByAuthorIdRequest;
 
 /**
  * @OA\Delete(

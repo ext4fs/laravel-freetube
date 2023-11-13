@@ -8,59 +8,31 @@ use Illuminate\Auth\Access\Response;
 
 class PostPolicy
 {
-    /**
-     * Determine whether the user can view any models.
-     */
-    public function getAny(User $user): bool
-    {
+    public function getAny(User $user): bool {
+        return true;
+    }
+
+    public function get(User $user, Post $post): bool {
+        return true;
+    }
+
+    public function create(User $user): bool {
+        return true;
+    }
+
+    public function update(User $user, Post $post): bool {
+        return $user->is_admin || $user->id === $post->author_id;
+    }
+
+    public function delete(User $user, Post $post): bool {
+        return $user->is_admin || $user->id === $post->author_id;
+    }
+
+    public function restore(User $user, Post $post): bool {
         //
     }
 
-    /**
-     * Determine whether the user can view the model.
-     */
-    public function get(User $user, Post $post): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can create models.
-     */
-    public function create(User $user): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can update the model.
-     */
-    public function update(User $user, Post $post): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can delete the model.
-     */
-    public function delete(User $user, Post $post): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Post $post): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Post $post): bool
-    {
+    public function forceDelete(User $user, Post $post): bool {
         //
     }
 }

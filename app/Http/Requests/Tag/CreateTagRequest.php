@@ -10,7 +10,7 @@ class CreateTagRequest extends FormRequest {
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool {
-        return false;
+        return $this->user()->can('create');
     }
 
     /**
@@ -20,7 +20,7 @@ class CreateTagRequest extends FormRequest {
      */
     public function rules(): array {
         return [
-            //
+            'name' => ['required', 'string']
         ];
     }
 }

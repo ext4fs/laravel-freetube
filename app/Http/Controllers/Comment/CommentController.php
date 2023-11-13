@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Comment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Comment\CreateCommentRequest;
 use App\Http\Requests\Comment\DeleteCommentByIdRequest;
+use App\Http\Requests\Comment\DeleteCommentsByAuthorIdRequest;
 use App\Http\Requests\Comment\DeleteCommentsRequest;
 use App\Http\Requests\Comment\GetCommentByIdRequest;
 use App\Http\Requests\Comment\GetCommentsByAuthorIdRequest;
 use App\Http\Requests\Comment\GetCommentsByPostIdRequest;
 use App\Http\Requests\Comment\GetCommentsRequest;
 use App\Http\Requests\Comment\UpdateCommentByIdRequest;
-use App\Http\Requests\DeleteCommentsByAuthorIdRequest;
 use App\Http\Requests\DeleteCommentsByPostIdRequest;
 use App\Models\Comment;
 
