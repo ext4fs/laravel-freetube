@@ -10,7 +10,7 @@ use App\Http\Requests\Category\CreateCategoryRequest;
  *     tags={"Category"},
  *     summary="create a category",
  *     security={{ "bearerAuth": {}}},
- *     @OA\Response(response="200", description="success"),
+ *     @OA\Response(response="200", description="a category"),
  * )
  */
 class CreateCategoryController extends CategoryController {

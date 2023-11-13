@@ -9,6 +9,9 @@ use App\Http\Requests\Auth\LogInRequest;
  *     path="/auth/login",
  *     summary="log into the account",
  *     tags={"Auth"},
+ *     @OA\RequestBody (
+ *          @OA\JsonContent(ref="#/components/schemas/LogInRequest")
+ *      ),
  *     @OA\Response(response="200", description="success")
  * )
  */

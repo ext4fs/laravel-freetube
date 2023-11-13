@@ -23,7 +23,7 @@ use App\Http\Requests\Post\GetPostsByAuthorIdRequest;
  * )
  */
 class GetPostsByAuthorIdController extends PostController {
-    public function __invoke(string $authorId, GetPostsByAuthorIdRequest $request) {
+    public function __invoke(string $userId, GetPostsByAuthorIdRequest $request) {
         return $this->getPostsByAuthorId($userId, $request);
     }
 }

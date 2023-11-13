@@ -9,7 +9,7 @@ use App\Http\Requests\Category\GetCategoryByIdRequest;
  *     path="/categories/{categoryId}",
  *     tags={"Category"},
  *     summary="get a category by given id",
- *     @OA\Response(response="200", description="success"),
+ *     @OA\Response(response="200", description="a category with given id"),
  * )
  */
 class GetCategoryByIdController extends CategoryController {

@@ -24,12 +24,14 @@ use App\Http\Controllers\Comment\GetCommentsController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\File\DeleteFileByIdController;
 use App\Http\Controllers\File\DeleteFilesController;
+use App\Http\Controllers\Post\CatchUpPostByIdController;
 use App\Http\Controllers\Post\CreatePostController;
 use App\Http\Controllers\Post\DeletePostByIdController;
 use App\Http\Controllers\Post\DeletePostsByAuthorIdController;
 use App\Http\Controllers\Post\DeletePostsController;
 use App\Http\Controllers\Post\GetPostsByCategoryIdController;
 use App\Http\Controllers\Post\GetPostsByTagIdController;
+use App\Http\Controllers\Post\PutDownPostByIdController;
 use App\Http\Controllers\Post\UpdatePostByIdController;
 use App\Http\Controllers\Post\GetPostByIdController;
 use App\Http\Controllers\Post\GetPostsByAuthorIdController;
@@ -38,6 +40,7 @@ use App\Http\Controllers\Tag\CreateTagController;
 use App\Http\Controllers\Tag\DeleteTagByIdController;
 use App\Http\Controllers\Tag\DeleteTagsController;
 use App\Http\Controllers\Tag\GetTagByIdController;
+use App\Http\Controllers\Tag\GetTagsByPostIdController;
 use App\Http\Controllers\Tag\GetTagsController;
 use App\Http\Controllers\Tag\UpdateTagByIdController;
 use App\Http\Controllers\User\CreateUserController;
@@ -96,21 +99,22 @@ Route::prefix('v1')->group(function() {
         Route::get('/{userId}/posts', GetPostsByAuthorIdController::class);
         Route::get('/{userId}/comments', GetCommentsByAuthorIdController::class);
         Route::get('/{userId}/posts/{postId}/comments', GetCommentsByPostIdAndAuthorIdController::class);
-    })->where(['userId' => '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$', 'postId' => '^[0-9]+$']);
+    })->where(['postId' => '^[0-9]+$']);
 
     Route::prefix('posts')->group(function() {
         Route::get('/', GetPostsController::class);
         Route::get('/{postId}', GetPostByIdController::class);
         Route::get('/{postId}/comments', GetCommentsByPostIdController::class);
-        Route::get('/{postId}/tags');
+        Route::get('/{postId}/tags', GetTagsByPostIdController::class);
         Route::middleware('auth')->group(function () {
             Route::post('/', CreatePostController::class);
             Route::put('/{postId}', UpdatePostByIdController::class);
-            Route::get('/{postId}/up',);
-            Route::get('/{postId}/down',);
+            Route::get('/{postId}/catch-up', CatchUpPostByIdController::class);
+            Route::get('/{postId}/put-down', PutDownPostByIdController::class);
             Route::delete('/', DeletePostsController::class);
             Route::delete('/{postId}', DeletePostByIdController::class);
             Route::delete('/{postId}/comments', DeleteCommentsByPostIdController::class);
+            Route::delete('/{postId}/tags', DeleteCommentsByPostIdController::class);
         });
     })->where(['postId' => '^[0-9]+$']);
 
@@ -157,5 +161,5 @@ Route::prefix('v1')->group(function() {
             Route::delete('/', DeleteFilesController::class);
             Route::delete('/{fileId}', DeleteFileByIdController::class);
         });
-    })->where(['fileId' => '^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$']);
+    });
 });

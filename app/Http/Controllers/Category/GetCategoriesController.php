@@ -11,7 +11,7 @@ use App\Http\Requests\Category\GetCategoriesRequest;
  *     summary="get all categories",
  *     @OA\Response(
  *         response="200",
- *         description="success"
+ *         description="all categories"
  *     )
  * )
  */

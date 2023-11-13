@@ -57,7 +57,7 @@ class UserController extends Controller {
         return $user;
     }
 
-    public function updateUserById(int $userId, UpdateUserByIdRequest $request) {
+    public function updateUserById(string $userId, UpdateUserByIdRequest $request) {
         $user = User::find($userId);
         $data = $request->input();
         $user->update($data);
@@ -69,7 +69,7 @@ class UserController extends Controller {
         return $users;
     }
 
-    public function deleteUserById(int $userId, DeleteUserByIdRequest $request) {
+    public function deleteUserById(string $userId, DeleteUserByIdRequest $request) {
         $user = User::destroy($userId);
         return $user;
     }

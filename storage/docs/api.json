@@ -29,6 +29,15 @@
                     "Auth"
                 ],
                 "summary": "log into the account",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LogInRequest"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "success"
@@ -107,7 +116,7 @@
                 "summary": "get all categories",
                 "responses": {
                     "200": {
-                        "description": "success"
+                        "description": "all categories"
                     }
                 }
             },
@@ -118,7 +127,7 @@
                 "summary": "create a category",
                 "responses": {
                     "200": {
-                        "description": "success"
+                        "description": "a category"
                     }
                 },
                 "security": [
@@ -152,7 +161,7 @@
                 "summary": "get a category by given id",
                 "responses": {
                     "200": {
-                        "description": "success"
+                        "description": "a category with given id"
                     }
                 }
             },
@@ -163,7 +172,7 @@
                 "summary": "update a category by given id",
                 "responses": {
                     "200": {
-                        "description": "success"
+                        "description": "updated category with given id"
                     }
                 },
                 "security": [
@@ -827,6 +836,16 @@
                     "User"
                 ],
                 "summary": "get a user by given id",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Get user by given id."
@@ -838,6 +857,16 @@
                     "User"
                 ],
                 "summary": "update a user by given id",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -854,6 +883,16 @@
                     "User"
                 ],
                 "summary": "delete a user by given id",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Delete user by given id."
@@ -911,6 +950,19 @@
                 "description": "the unique identifier of a user",
                 "type": "string",
                 "format": "uuid4"
+            },
+            "LogInRequest": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "password": {
+                        "type": "string",
+                        "format": "password"
+                    }
+                },
+                "type": "object"
             },
             "SignUpRequest": {
                 "properties": {

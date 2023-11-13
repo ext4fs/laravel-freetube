@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller {
 
     public function logIn(LogInRequest $request) {
-        $data = $request->only('email', 'password');
+        $data = $request->validated();
         return $this->verifyUserCreditials($data['email'], $data['password']);
     }
 
@@ -38,13 +38,13 @@ class AuthController extends Controller {
     }
 
     public function signUp(SignUpRequest $request) {
-        $data = $request->only('name', 'email', 'password');
+        $data = $request->validated();
         try {
             $user = User::create($data);
             return $this->verifyUserCreditials($user->email, $data['password']);
         } catch (UniqueConstraintViolationException $e) {
             return response()->json([
-                'error' => 'Email is already taken'
+                'error' => 'email is already taken'
             ]);
         }
     }
