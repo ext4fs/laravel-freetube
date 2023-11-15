@@ -31,21 +31,21 @@ use Illuminate\Support\Facades\Hash;
  */
 class UserController extends Controller {
 
-    public function getUsers(GetUsersRequest $request) {
+    public function getUsers() {
         $users = User::all();
         return $users;
     }
 
-    public function getUserById(string $userId, GetUserByIdRequest $request) {
+    public function getUserById(string $userId) {
         $user = User::find($userId);
         return $user;
     }
 
-    public function getMe(GetMeRequest $request) {
-        return Auth::getUser();
+    public function getMe() {
+        return auth()->user();
     }
 
-    public function getUserByPostId(int $postId, GetUserByPostIdRequest $request) {
+    public function getUserByPostId(int $postId) {
         $user = Post::find($postId)->author();
         return $user;
     }
@@ -64,13 +64,17 @@ class UserController extends Controller {
         return $user;
     }
 
-    public function deleteUsers(DeleteUsersRequest $request) {
+    public function deleteUsers() {
         $users = User::truncate();
         return $users;
     }
 
-    public function deleteUserById(string $userId, DeleteUserByIdRequest $request) {
-        $user = User::destroy($userId);
+    public function deleteUserById(string $userId) {
+        $user = User::find($userId);
+        if (!request()->user()->cannot('delete', $user)) {
+            abort(403);
+        }
+        $user->delete();
         return $user;
     }
 }

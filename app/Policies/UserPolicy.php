@@ -16,15 +16,15 @@ class UserPolicy
     }
 
     public function create(User $user): bool {
-        return $user->is_admin;
+        return $user->isAdmin();
     }
 
     public function update(User $user, User $model): bool {
-        return $user->is_admin || $user->id === $model->id;
+        return $user->isAdmin() || $user->id === $model->id;
     }
 
     public function delete(User $user, User $model): bool {
-        return $user->is_admin || $user->id === $model->id;
+        return $user->isAdmin() || $user->id === $model->id;
     }
 
     public function restore(User $user, User $model): bool {

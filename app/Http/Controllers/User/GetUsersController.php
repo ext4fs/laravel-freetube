@@ -14,7 +14,7 @@ use App\Http\Requests\User\GetUsersRequest;
  *
  */
 class GetUsersController extends UserController {
-    public function __invoke(GetUsersRequest $request) {
-        return $this->getUsers($request);
+    public function __invoke() {
+        return $this->getUsers();
     }
 }

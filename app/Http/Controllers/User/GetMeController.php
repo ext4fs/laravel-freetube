@@ -17,7 +17,7 @@ use App\Http\Requests\User\GetMeRequest;
  * )
  */
 class GetMeController extends UserController {
-    public function __invoke(GetMeRequest $request) {
-        return $this->getMe($request);
+    public function __invoke() {
+        return $this->getMe();
     }
 }

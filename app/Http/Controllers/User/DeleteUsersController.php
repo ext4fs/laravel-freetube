@@ -14,7 +14,7 @@ use App\Http\Requests\User\DeleteUsersRequest;
  * )
  */
 class DeleteUsersController extends UserController {
-    public function __invoke(DeleteUsersRequest $request) {
-        return $this->deleteUsers($request);
+    public function __invoke() {
+        return $this->deleteUsers();
     }
 }

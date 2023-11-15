@@ -21,10 +21,7 @@ use App\Http\Requests\User\GetUserByIdRequest;
  * )
  */
 class GetUserByIdController extends UserController {
-    public function __invoke(string $userId, GetUserByIdRequest $request) {
-        if (!$request->authorize()) {
-            abort(403);
-        }
-        return $this->getUserById($userId, $request);
+    public function __invoke(string $userId) {
+        return $this->getUserById($userId);
     }
 }

@@ -11,8 +11,7 @@ class GetUserByIdRequest extends FormRequest
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool {
-        $userId = $this->route('userId');
-        return $this->user()->can('get', User::class, $userId);
+        return true;
     }
 
     /**

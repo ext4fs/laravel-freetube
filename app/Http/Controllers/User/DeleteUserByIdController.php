@@ -22,7 +22,7 @@ use App\Http\Requests\User\DeleteUserByIdRequest;
  * )
  */
 class DeleteUserByIdController extends UserController {
-    public function __invoke(string $userId, DeleteUserByIdRequest $request) {
-        return $this->deleteUserById($userId, $request);
+    public function __invoke(string $userId) {
+        return $this->deleteUserById($userId);
     }
 }
